@@ -22,16 +22,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get Location"/>
                                 <connections>
-                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Vu-ER-ljS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PES-yN-9Ub">
-                                <rect key="frame" x="92" y="316" width="191" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Stop Location"/>
-                                <connections>
-                                    <action selector="stopLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bnb-Ah-AXQ"/>
+                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fid-Wg-l5h"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -39,6 +30,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tag" id="6GQ-vy-zkc"/>
+                    <connections>
+                        <outlet property="getButton" destination="9eX-nK-ygu" id="plD-rB-EoA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,10 +9,17 @@ import UIKit
 import CoreLocation
 import CoreLocationUI
 
+
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var getButton: UIButton!
+    
     
     //create location manager object
     let locationManager = CLLocationManager()
+    
+    var location: CLLocation?
+    
     var updatingLocation = false
     var locationError: Error?
     
@@ -24,11 +31,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         if updatingLocation {
             stopLocationManager()
-        } else {
             locationError = nil
         }
         getStatus()
-        
+         
     }
 
     @IBAction func getLocation(_ sender: Any) {
@@ -37,22 +43,24 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             print("Auth status not determined")
             locationManager.requestWhenInUseAuthorization()
             return
-        } else if authStatus == .restricted {
+        } else if authStatus == .restricted || authStatus == .denied {
             print("restricted")
+            showLocationServicesDeniedAlert()
+            return
         }
-        print("Update Location")
-        startLocationManager()
-    }
-    
-    @IBAction func stopLocation(_ sender: Any) {
-        print("Stop Upating Location")
-        stopLocationManager()
-        getStatus()
+        
+        if updatingLocation {
+            stopLocationManager()
+        } else {
+            getStatus()
+            location = nil
+            locationError = nil
+            startLocationManager()
+        }
     }
     
     func startLocationManager() {
         if CLLocationManager.locationServicesEnabled() {
-            getStatus()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
@@ -65,6 +73,16 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+        }
+        print("Stop updating location")
+        getStatus()
+    }
+    
+    func configureGetButton() {
+        if updatingLocation {
+            getButton.setTitle("Stop", for: .normal)
+        } else {
+            getButton.setTitle("Get Location", for: .normal)
         }
     }
     
@@ -85,23 +103,22 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             statusMessage = "Tap 'Get Location' to Start"
         }
-        
+        configureGetButton()
         print(statusMessage)
     }
     
+    
+    // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error.localizedDescription)")
         
-        if let error = (error as? NSError) {
-            print(error._domain)
-            print(error._code)
-        }
-        
+        //Unable to get location right now, try again later
         if (error as NSError).code == CLError.locationUnknown.rawValue {
             print("Location Unknown")
             return
         }
         
+        //store error
         locationError = error
         stopLocationManager()
         getStatus()
@@ -110,11 +127,40 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
-        locationError = nil
+        
+        //Last location is old/cached, ignore and continue search
+        if newLocation.timestamp.timeIntervalSinceNow < -5 {
+            return
+        }
+        
+        //ignore invalid accuracies
+        if newLocation.horizontalAccuracy < 0 {
+            return
+        }
+        
+        //If there was no previous location, or the accuracy is larger than the most recent one, adopt new location
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            //new location to be used, clear error
+            locationError = nil
+            location = newLocation
+        }
+        
+        //current location and new location accuracy the same, stop updating location
+        if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+            print("locations similar")
+            stopLocationManager()
+        }
+        getStatus()
  
     }
-
+    
+    //MARK: - Helper Methods
+    func showLocationServicesDeniedAlert() {
+        let ac = UIAlertController(title: "Location Services Disable", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        
+        present(ac, animated: true, completion: nil)
+    }
 }
-
-
 
