@@ -18,6 +18,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     //create location manager object
     let locationManager = CLLocationManager()
     
+    var timer: Timer?
+    
     var location: CLLocation?
     
     var updatingLocation = false
@@ -65,14 +67,32 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            
+            timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
         }
     }
+    
+    @objc func didTimeOut() {
+        print("***Time Out***")
+        if location == nil {
+            stopLocationManager()
+            locationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+            getStatus()
+        }
+    }
+    
+    
     
     func stopLocationManager() {
         if updatingLocation {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+            
         }
         print("Stop updating location")
         getStatus()
