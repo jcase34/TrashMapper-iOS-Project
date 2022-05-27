@@ -8,7 +8,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tag-->
+        <!--Map-->
+        <scene sceneID="Jmc-d2-JcR">
+            <objects>
+                <viewController id="qau-9F-KAE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Di0-V8-jPw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-5H-usz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BLY-Pw-V5U"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="bgj-FE-Idk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wjl-rA-H8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="-565"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="54H-JF-geS">
+            <objects>
+                <viewController id="TPL-Yq-0iu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Pb-OK-qaB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IdR-P4-WTR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWX-5N-LJY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2886" y="-565"/>
+        </scene>
+        <!--Current Location View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CurrentLocationViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,14 +66,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tag" id="6GQ-vy-zkc"/>
+                    <navigationItem key="navigationItem" id="w8I-R8-yIb"/>
                     <connections>
                         <outlet property="getButton" destination="9eX-nK-ygu" id="plD-rB-EoA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071.2" y="116.49175412293854"/>
+            <point key="canvasLocation" x="2009" y="214"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bk1-Im-8Lc">
@@ -49,15 +86,37 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Wag-bQ-QtE"/>
+                        <segue destination="qau-9F-KAE" kind="relationship" relationship="viewControllers" id="dwh-eP-Bg7"/>
+                        <segue destination="amA-f0-AFA" kind="relationship" relationship="viewControllers" id="Wag-bQ-QtE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJm-4Y-10j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="116.49175412293854"/>
+            <point key="canvasLocation" x="1070" y="-565"/>
+        </scene>
+        <!--User-->
+        <scene sceneID="3q3-cj-OmS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amA-f0-AFA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" id="6GQ-vy-zkc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zj7-5g-LIH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="H7E-Ho-Vdb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpS-14-oRR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="214"/>
         </scene>
     </scenes>
     <resources>
+        <image name="map" catalog="system" width="128" height="110"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
