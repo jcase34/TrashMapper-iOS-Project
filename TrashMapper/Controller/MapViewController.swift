@@ -1,42 +1,55 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  TrashMapper
 //
-//  Created by Jacob Case on 5/13/22.
+//  Created by Jacob Case on 5/27/22.
 //
 
 import UIKit
 import CoreLocation
 import CoreLocationUI
+import MapKit
 
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
 
-class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var getButton: UIButton!
-    
-    
-    //create location manager object
-    let locationManager = CLLocationManager()
-    var timer: Timer?
+    var locationManager = CLLocationManager()
     var location: CLLocation?
-    var updatingLocation = false
+    var timer: Timer?
     var locationError: Error?
+    var updatingLocation: Bool = false
     
-
+    @IBOutlet weak var locationButton: CLLocationButton!
+    
+    @IBOutlet weak var getUserLocation: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("at current locaiton view")
-        
-        if updatingLocation {
-            stopLocationManager()
-            locationError = nil
-        }
-        getStatus()
-         
-    }
 
-    @IBAction func getLocation(_ sender: Any) {
+        // Do any additional setup after loading the view.
+        print("At mapviewcontroller")
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fetchUserLocation), userInfo: nil, repeats: false)
+    }
+    
+    
+    @IBAction func getUserLocation(_ sender: Any) {
+        zoomUserLocation()
+
+    }
+    
+    func zoomUserLocation() {
+        let region = MKCoordinateRegion(
+              center: mapView.userLocation.coordinate,
+              latitudinalMeters: 1000,
+              longitudinalMeters: 1000)
+            mapView.setRegion(
+              mapView.regionThatFits(region),
+              animated: true)
+        print("Zooming to user location")
+    }
+    
+    func getLocation() {
         let authStatus = locationManager.authorizationStatus
         if authStatus == .notDetermined {
             print("Auth status not determined")
@@ -52,7 +65,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             stopLocationManager()
         } else {
             getStatus()
-            location = nil
+            location = nil  
             locationError = nil
             startLocationManager()
         }
@@ -69,6 +82,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    @objc func fetchUserLocation() {
+        getLocation()
+        zoomUserLocation()
+    }
+    
     @objc func didTimeOut() {
         print("***Time Out***")
         if location == nil {
@@ -77,8 +95,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             getStatus()
         }
     }
-    
-    
     
     func stopLocationManager() {
         if updatingLocation {
@@ -94,15 +110,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         print("Stop updating location")
         getStatus()
     }
-    
-    func configureGetButton() {
-        if updatingLocation {
-            getButton.setTitle("Stop", for: .normal)
-        } else {
-            getButton.setTitle("Get Location", for: .normal)
-        }
-    }
-    
 
     func getStatus() {
         let statusMessage: String
@@ -120,7 +127,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             statusMessage = "Tap 'Get Location' to Start"
         }
-        configureGetButton()
         print(statusMessage)
     }
     
@@ -179,5 +185,5 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         present(ac, animated: true, completion: nil)
     }
-}
 
+}
