@@ -12,13 +12,12 @@
 		86174BA928415EA3005774AC /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA828415EA3005774AC /* UserPost.swift */; };
 		8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D928282EE8AA00E53C00 /* AppDelegate.swift */; };
 		8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */; };
-		8625D92D282EE8AA00E53C00 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */; };
 		8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D92E282EE8AA00E53C00 /* Main.storyboard */; };
 		8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8625D931282EE8AA00E53C00 /* TrashMapper.xcdatamodeld */; };
 		8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8625D934282EE8AC00E53C00 /* Assets.xcassets */; };
 		8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D936282EE8AC00E53C00 /* LaunchScreen.storyboard */; };
 		86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86740B0628404ACA00161DAA /* GoogleService-Info.plist */; };
-		869737212842BF62009B99FB /* TagLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* TagLocationViewController.swift */; };
+		869737212842BF62009B99FB /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* LocationDetailsViewController.swift */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,14 +29,13 @@
 		8625D925282EE8AA00E53C00 /* TrashMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8625D928282EE8AA00E53C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		8625D92F282EE8AA00E53C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8625D932282EE8AA00E53C00 /* TrashMapper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrashMapper.xcdatamodel; sourceTree = "<group>"; };
 		8625D934282EE8AC00E53C00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8625D937282EE8AC00E53C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8625D939282EE8AC00E53C00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86740B0628404ACA00161DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		869737202842BF62009B99FB /* TagLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLocationViewController.swift; sourceTree = "<group>"; };
+		869737202842BF62009B99FB /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
 		FF6CDFED9D78ACBF04D40830 /* Pods-TrashMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.debug.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,10 +115,9 @@
 		86C0CE7128405517000D0B3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */,
 				86174BA42841434F005774AC /* MapViewController.swift */,
 				86174BA628414F6A005774AC /* UserProfileViewController.swift */,
-				869737202842BF62009B99FB /* TagLocationViewController.swift */,
+				869737202842BF62009B99FB /* LocationDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,13 +246,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8625D92D282EE8AA00E53C00 /* CurrentLocationViewController.swift in Sources */,
 				86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */,
 				8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */,
 				8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */,
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
-				869737212842BF62009B99FB /* TagLocationViewController.swift in Sources */,
+				869737212842BF62009B99FB /* LocationDetailsViewController.swift in Sources */,
 				86174BA928415EA3005774AC /* UserPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

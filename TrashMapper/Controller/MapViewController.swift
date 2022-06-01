@@ -20,29 +20,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationError: Error?
     var updatingLocation: Bool = false
     
-    @IBOutlet weak var locationButton: CLLocationButton!
-    
-    @IBOutlet weak var getUserLocation: UIButton!
-    
+    @IBOutlet weak var goToUserLocation: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fetchUserLocation), userInfo: nil, repeats: false)
+        getLocation()        
+        
     }
     
-    
-    @IBAction func getUserLocation(_ sender: Any) {
+    @IBAction func goToUserLocation(_ sender: Any) {
         zoomUserLocation()
-
     }
     
-    func zoomUserLocation() {
+    @objc func zoomUserLocation() {
         let region = MKCoordinateRegion(
               center: mapView.userLocation.coordinate,
-              latitudinalMeters: 1000,
-              longitudinalMeters: 1000)
+              latitudinalMeters: 500,
+              longitudinalMeters: 500)
             mapView.setRegion(
               mapView.regionThatFits(region),
               animated: true)
@@ -82,10 +78,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    @objc func fetchUserLocation() {
-        getLocation()
-        zoomUserLocation()
-    }
     
     @objc func didTimeOut() {
         print("***Time Out***")
@@ -124,6 +116,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             statusMessage = "Location Services Disabled"
         } else if updatingLocation {
             statusMessage = "Searching..."
+            zoomUserLocation()
         } else {
             statusMessage = "Tap 'Get Location' to Start"
         }
