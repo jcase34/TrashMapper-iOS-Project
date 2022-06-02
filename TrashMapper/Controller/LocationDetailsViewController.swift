@@ -8,28 +8,24 @@
 import UIKit
 import CoreLocation
 
-class LocationDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+class LocationDetailsViewController: UITableViewController {
     
     
     
-    
-    
-
-    var image: UIImage?
-    
-    
-    @IBAction func cancel(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        
-    }
-
     @IBAction func addPhoto(_ sender: Any) {
         print("add photo tapped")
+    }
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func submit(_ sender: Any) {
+        print("submit tapped")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("At Location details view controller")
         // Do any additional setup after loading the view.
     }
     
@@ -37,10 +33,8 @@ class LocationDetailsViewController: UIViewController, UIImagePickerControllerDe
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
     }
+
     
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
 }
+

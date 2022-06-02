@@ -10,7 +10,7 @@ import CoreLocation
 import CoreLocationUI
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate  {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,11 +26,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
-        getLocation()        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
+        
+        //pull data from firebase
+        //load as pins on map
+        //fetched posts should omit userID for privacy
+        
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getLocation()
+    }
+    
     @IBAction func goToUserLocation(_ sender: Any) {
+        print("zoom to user tapped")
         zoomUserLocation()
     }
     
@@ -116,7 +127,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             statusMessage = "Location Services Disabled"
         } else if updatingLocation {
             statusMessage = "Searching..."
-            zoomUserLocation()
         } else {
             statusMessage = "Tap 'Get Location' to Start"
         }
@@ -124,7 +134,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    // MARK: - CLLocationManagerDelegate
+    //MARK: - Helper Methods
+    func showLocationServicesDeniedAlert() {
+        let ac = UIAlertController(title: "Location Services Disable", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        
+        present(ac, animated: true, completion: nil)
+    }
+
+}
+
+//MARK: - CLLocationManagerDelegate
+extension MapViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error.localizedDescription)")
         
@@ -170,13 +192,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
  
     }
     
-    //MARK: - Helper Methods
-    func showLocationServicesDeniedAlert() {
-        let ac = UIAlertController(title: "Location Services Disable", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        ac.addAction(okAction)
-        
-        present(ac, animated: true, completion: nil)
-    }
-
+    
+    
 }
