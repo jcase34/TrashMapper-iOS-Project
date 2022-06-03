@@ -22,8 +22,6 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
 
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -48,6 +46,12 @@ class LocationDetailsViewController: UITableViewController {
     
     @IBAction func submit(_ sender: Any) {
         print("submit tapped")
+        //Dummy post information
+        print(coordinate.longitude)
+        print(coordinate.latitude)
+        
+        
+        
         //create a userPost
         //push to firebase
         //HUD view with "Location Added"
@@ -57,23 +61,24 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //Dummy post information
-        longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
-        latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
+        //Load Information For User
         dateLabel.text = format(date: Date())
-        
-        
+        //UITextView Setup
+        descriptionTextView.text = "Enter Description Here"
+        descriptionTextView.textColor = UIColor.lightGray
+               
         
         //Delegate assignments
         descriptionTextView.delegate = self
         
         
-        //UITextView Setup
-        descriptionTextView.text = "Enter Description Here"
-        descriptionTextView.textColor = UIColor.lightGray
         
         //ISSUE - addPhotoButton.addDashedBorder() does not work, doesn't cover entire frame.
         //addPhotoButton.addDashedBorder()
+        
+        //ToDo
+        //App Looks better in white for demonstration
+        //Update later with custom Xibs, colors, etc.
         
         
     }
@@ -90,10 +95,6 @@ class LocationDetailsViewController: UITableViewController {
     func format(date: Date) -> String {
      return dateFormatter.string(from: date)
    }
-    
-    
-    
-    
     
 }
 //MARK: - Table View Methods
