@@ -26,7 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
 
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
         
         //pull data from firebase
         //load as pins on map
@@ -141,6 +141,15 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         ac.addAction(okAction)
         
         present(ac, animated: true, completion: nil)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepping for segue, identifier = \(String(describing: segue.identifier))")
+        if segue.identifier == "AddLocation" {
+            let destinationVC = segue.destination as! LocationDetailsViewController
+            destinationVC.coordinate = location!.coordinate
+      }
     }
 
 }

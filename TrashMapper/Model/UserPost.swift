@@ -13,7 +13,16 @@ struct UserPost {
     let date: Date
     let locationDescription: String
     let userID: String
-    let longitude: CLLocationCoordinate2D
-    let latitude: CLLocationCoordinate2D
+    let longitude: Double
+    let latitude: Double
+    
+    init(date date: Date, locationDescription locationDescription: String, userID userID: String, longitude longitude: Double, latitude latitude: Double) {
+        self.date = date
+        self.locationDescription = locationDescription
+        self.userID = userID
+        self.longitude = longitude
+        self.latitude = latitude
+    }
+    
 }
 
