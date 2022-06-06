@@ -4,7 +4,7 @@
 
 This is a personal project I've decided to work on to help build out my iOS development/Swift skillset and hopefully help clean up the environment.
 
-I will try to do daily additions to the app and support the write ups here: https://www.8bitoctave.com/projects/
+I will try to do daily additions to the app and support the write ups here: https://www.8bitoctave.com/trashmapper/
 
 ## Description
 
