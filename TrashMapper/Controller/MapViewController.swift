@@ -20,7 +20,10 @@ class MapViewController: UIViewController  {
     var locationError: Error?
     var updatingLocation: Bool = false
     
-    //dummy locations
+    
+    //make a array of dummy models to test on map
+    var dummyPosts = [PostModel]()
+    
     
     
     
@@ -36,6 +39,12 @@ class MapViewController: UIViewController  {
         //pull data from firebase
         //load as pins on map
         //fetched posts should omit userID for privacy
+        
+        
+        //dummy post actions
+        dummyPosts.append(PostModel(photoURL: "", date: <#T##Date#>, locationDescription: <#T##String#>, userID: <#T##String#>, longitude: <#T##Double#>, latitude: <#T##Double#>))
+        dummyPosts.append(PostModel(photoURL: String, date: <#T##Date#>, locationDescription: <#T##String#>, userID: <#T##String#>, longitude: <#T##Double#>, latitude: <#T##Double#>))
+        dummyPosts.append(PostModel(photoURL: <#T##String#>, date: <#T##Date#>, locationDescription: <#T##String#>, userID: <#T##String#>, longitude: <#T##Double#>, latitude: <#T##Double#>))
         
         
     }
@@ -168,36 +177,14 @@ extension MapViewController : MKMapViewDelegate {
     //create custom pin type, showing image, distance from user, information button
     //when tapped, should open an info card with the image, the description, and the distance from the user?
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        guard annotation is PostModel else {
+        guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        let identifier = "userPost"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil {
-            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            //can subclass to customize the pin to look however you want
-            
-            //set visual properties, pin to green color with callout,
-            pinView.isEnabled = true
-            pinView.canShowCallout = true
-            pinView.animatesDrop = false
-            pinView.tintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
-            
-            //add a button to the pinView
-            let rightButtun = UIButton(type: .detailDisclosure)
-            rightButtun.addTarget(self, action: #selector(showLocationDetails(_:)), for: .touchUpInside)
-            pinView.rightCalloutAccessoryView = rightButtun
-            
-            
-        }
         
-        
-        
-        
-       return annotationView
     }
+    
+    
 }
 
 

@@ -48,14 +48,7 @@ class CreatePostViewController: UITableViewController {
     
     @IBAction func submit(_ sender: Any) {
         print("submit tapped")
-        
-        //create a dummy post with the path to trash_in_park.jpg
-        //add PostModel data and generate a mapView showing the location on Map
-        
-        
-        
-        
-        
+    
         //create a userPost
         //push to firebase
         //HUD view with "Location Added"
