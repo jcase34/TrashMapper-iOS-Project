@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 
 
+
 private let dateFormatter: DateFormatter = {
   let formatter = DateFormatter()
   formatter.dateStyle = .medium
@@ -16,13 +17,14 @@ private let dateFormatter: DateFormatter = {
   return formatter
 }()
 
-class LocationDetailsViewController: UITableViewController {
+class CreatePostViewController: UITableViewController {
     
     
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
 
+    let bundleImage: UIImage? = UIImage(named: "trash_in_park.jpg")
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var image: UIImage?
@@ -46,9 +48,11 @@ class LocationDetailsViewController: UITableViewController {
     
     @IBAction func submit(_ sender: Any) {
         print("submit tapped")
-        //Dummy post information
-        print(coordinate.longitude)
-        print(coordinate.latitude)
+        
+        //create a dummy post with the path to trash_in_park.jpg
+        //add PostModel data and generate a mapView showing the location on Map
+        
+        
         
         
         
@@ -56,6 +60,8 @@ class LocationDetailsViewController: UITableViewController {
         //push to firebase
         //HUD view with "Location Added"
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +85,7 @@ class LocationDetailsViewController: UITableViewController {
         //ToDo
         //App Looks better in white for demonstration
         //Update later with custom Xibs, colors, etc.
-        
+    
         
     }
     
@@ -95,31 +101,6 @@ class LocationDetailsViewController: UITableViewController {
     func format(date: Date) -> String {
      return dateFormatter.string(from: date)
    }
-    
-}
-//MARK: - Table View Methods
-extension LocationDetailsViewController {
-    
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 1 {
-            return indexPath
-        } else {
-            return nil
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            descriptionTextView.becomeFirstResponder()
-        }
-    }
-    
-}
-
-
-//MARK: - Image Picker Delegate
-extension LocationDetailsViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     
     func takePhotoWithCamera() {
         let imagePicker = UIImagePickerController()
@@ -157,6 +138,30 @@ extension LocationDetailsViewController : UIImagePickerControllerDelegate, UINav
         present(alert, animated: true)
         
     }
+
+}
+//MARK: - Table View Methods
+extension CreatePostViewController {
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            descriptionTextView.becomeFirstResponder()
+        }
+    }
+    
+}
+
+
+//MARK: - Image Picker Delegate
+extension CreatePostViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //After photo picked, grap photo from infokeys
@@ -170,10 +175,11 @@ extension LocationDetailsViewController : UIImagePickerControllerDelegate, UINav
         
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 //MARK: - Text View Delegate
-extension LocationDetailsViewController : UITextViewDelegate {
+extension CreatePostViewController : UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {

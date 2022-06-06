@@ -10,7 +10,7 @@ import CoreLocation
 import CoreLocationUI
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate  {
+class MapViewController: UIViewController  {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -19,6 +19,11 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
+    
+    //dummy locations
+    
+    
+    
     
     @IBOutlet weak var goToUserLocation: UIBarButtonItem!
     override func viewDidLoad() {
@@ -133,6 +138,11 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
         print(statusMessage)
     }
     
+    @objc func showLocationDetails(_ sender: UIButton) {
+        
+        
+    }
+    
     
     //MARK: - Helper Methods
     func showLocationServicesDeniedAlert() {
@@ -147,12 +157,50 @@ class MapViewController: UIViewController, MKMapViewDelegate  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "AddLocation" {
-            let destinationVC = segue.destination as! LocationDetailsViewController
+            let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
       }
     }
 
 }
+
+extension MapViewController : MKMapViewDelegate {
+    //create custom pin type, showing image, distance from user, information button
+    //when tapped, should open an info card with the image, the description, and the distance from the user?
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard annotation is PostModel else {
+            return nil
+        }
+        
+        let identifier = "userPost"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            //can subclass to customize the pin to look however you want
+            
+            //set visual properties, pin to green color with callout,
+            pinView.isEnabled = true
+            pinView.canShowCallout = true
+            pinView.animatesDrop = false
+            pinView.tintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+            
+            //add a button to the pinView
+            let rightButtun = UIButton(type: .detailDisclosure)
+            rightButtun.addTarget(self, action: #selector(showLocationDetails(_:)), for: .touchUpInside)
+            pinView.rightCalloutAccessoryView = rightButtun
+            
+            
+        }
+        
+        
+        
+        
+       return annotationView
+    }
+}
+
+
 
 //MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
@@ -200,7 +248,5 @@ extension MapViewController : CLLocationManagerDelegate {
         getStatus()
  
     }
-    
-    
     
 }
