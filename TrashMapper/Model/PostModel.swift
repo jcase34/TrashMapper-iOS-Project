@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreLocation
+
 
 class PostModel {
     var photoURL: String

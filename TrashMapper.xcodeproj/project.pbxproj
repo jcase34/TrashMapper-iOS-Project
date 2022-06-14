@@ -18,8 +18,11 @@
 		8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D936282EE8AC00E53C00 /* LaunchScreen.storyboard */; };
 		865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D26DE2849909200707C96 /* DashedBorderView.swift */; };
 		86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86740B0628404ACA00161DAA /* GoogleService-Info.plist */; };
+		8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */; };
+		8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A384284EE87000DC0434 /* UIImage+Resize.swift */; };
 		869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* CreatePostViewController.swift */; };
-		86C59DDE284B004F00A797A0 /* PostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* PostDataManager.swift */; };
+		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
+		86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */; };
 		86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86EA4C56284E906700372ACB /* trash_in_park.jpg */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
@@ -39,8 +42,11 @@
 		8625D939282EE8AC00E53C00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		865D26DE2849909200707C96 /* DashedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedBorderView.swift; sourceTree = "<group>"; };
 		86740B0628404ACA00161DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationAnnotation.swift; sourceTree = "<group>"; };
+		8680A384284EE87000DC0434 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		869737202842BF62009B99FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
-		86C59DDD284B004F00A797A0 /* PostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataManager.swift; sourceTree = "<group>"; };
+		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationDataManager.swift; sourceTree = "<group>"; };
 		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
 		86EA4C56284E906700372ACB /* trash_in_park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trash_in_park.jpg; sourceTree = SOURCE_ROOT; };
 		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 				8625D939282EE8AC00E53C00 /* Info.plist */,
 				8625D931282EE8AA00E53C00 /* TrashMapper.xcdatamodeld */,
 				86740B0628404ACA00161DAA /* GoogleService-Info.plist */,
+				86C2492828567E4B001CC414 /* Constants.swift */,
 			);
 			path = TrashMapper;
 			sourceTree = "<group>";
@@ -109,7 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				86174BA828415EA3005774AC /* PostModel.swift */,
-				86C59DDD284B004F00A797A0 /* PostDataManager.swift */,
+				86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */,
+				8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,7 +125,9 @@
 		86C0CE7028405510000D0B3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				865D26DE2849909200707C96 /* DashedBorderView.swift */,
 				8625D92E282EE8AA00E53C00 /* Main.storyboard */,
+				8680A384284EE87000DC0434 /* UIImage+Resize.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,7 +138,6 @@
 				86174BA42841434F005774AC /* MapViewController.swift */,
 				86174BA628414F6A005774AC /* UserProfileViewController.swift */,
 				869737202842BF62009B99FB /* CreatePostViewController.swift */,
-				865D26DE2849909200707C96 /* DashedBorderView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,12 +278,15 @@
 				86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */,
 				8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */,
 				8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */,
+				8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */,
+				8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */,
 				865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */,
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
 				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,
-				86C59DDE284B004F00A797A0 /* PostDataManager.swift in Sources */,
+				86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */,
 				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
+				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

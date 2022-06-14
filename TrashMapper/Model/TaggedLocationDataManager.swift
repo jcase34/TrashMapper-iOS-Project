@@ -19,4 +19,4 @@ import Foundation
 //protocols?
 //didSaveToFireBaseSuccessfully
 //didFetchFromFirebaseSuccessfully?
-
+//create a series of mkannotations related to posts received?d

@@ -39,7 +39,6 @@ A flat (denormalized) structure:
                 "Latitude" : 85.124
                 "LocationDescription" : Trash near street
                 "Date" : 24Jan 2022
-                "Time" : ****Do I want to add a time? Maybe we just log the date, what's the point of time?
             }
             "Location2" : {
                 "photoURL" : photoURL, a string?
@@ -47,7 +46,7 @@ A flat (denormalized) structure:
                 "Latitude" : 08.5
                 "LocationDescription" : Trash in a park
                 "Date" : 24Jan 2022
-                "Time" : ****Do I want to add a time? Maybe we just log the date, what's the point of time?
+
             }
         }
     "User2" : {...
@@ -84,7 +83,8 @@ Another options for storing locations:
 }
 
 "Locations" : {
-    Location1 : {
+        Location1 : {
+        "photoURL" : "some string"
         "Longitude" : 133.32
         "Latitude" : 41.24
         "Date" : 02Jan2022
@@ -92,6 +92,7 @@ Another options for storing locations:
     }  
     
     Location2 : {
+        "photoURL" : "some string"
         "Longitude" : 851.123
         "Latitude" : 06.348
         "Date" : 02Jan2022
@@ -99,6 +100,7 @@ Another options for storing locations:
     } 
     
     Location3 : {
+        "photoURL" : "some string"
         "Longitude" : 168.1
         "Latitude" : 87.3
         "Date" : 02Jan2022
