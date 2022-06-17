@@ -23,6 +23,9 @@
 		869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* CreatePostViewController.swift */; };
 		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
 		86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */; };
+		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
+		86CD5CAB285A6F22007BD8A9 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CAA285A6F22007BD8A9 /* Location+CoreDataClass.swift */; };
+		86CD5CAC285A6F22007BD8A9 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA9285A6F22007BD8A9 /* Location+CoreDataProperties.swift */; };
 		86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86EA4C56284E906700372ACB /* trash_in_park.jpg */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +50,9 @@
 		869737202842BF62009B99FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationDataManager.swift; sourceTree = "<group>"; };
+		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		86CD5CA9285A6F22007BD8A9 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		86CD5CAA285A6F22007BD8A9 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
 		86EA4C56284E906700372ACB /* trash_in_park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trash_in_park.jpg; sourceTree = SOURCE_ROOT; };
 		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 		8625D91C282EE8AA00E53C00 = {
 			isa = PBXGroup;
 			children = (
+				86CD5CA7285A44C1007BD8A9 /* Functions.swift */,
 				8625D927282EE8AA00E53C00 /* TrashMapper */,
 				8625D926282EE8AA00E53C00 /* Products */,
 				3DC67DEB2E35DAFB2E5321E0 /* Pods */,
@@ -115,6 +122,8 @@
 		86C0CE6F28405505000D0B3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86CD5CAA285A6F22007BD8A9 /* Location+CoreDataClass.swift */,
+				86CD5CA9285A6F22007BD8A9 /* Location+CoreDataProperties.swift */,
 				86174BA828415EA3005774AC /* PostModel.swift */,
 				86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */,
 				8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */,
@@ -275,11 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CD5CAB285A6F22007BD8A9 /* Location+CoreDataClass.swift in Sources */,
 				86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */,
 				8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */,
 				8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */,
 				8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */,
 				8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */,
+				86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */,
 				865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */,
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
@@ -287,6 +298,7 @@
 				86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */,
 				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
 				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
+				86CD5CAC285A6F22007BD8A9 /* Location+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

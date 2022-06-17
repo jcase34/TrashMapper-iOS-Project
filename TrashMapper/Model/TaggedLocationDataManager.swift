@@ -6,17 +6,10 @@
 //
 
 import Foundation
+import CoreData
 
+class LocationDataManager {
+    
 
-//Functions:
-//convertPostToShareableMapAnnotation?
-//save to firebase
-//fetch from firebase
-//sync with firebase
-//delete from firebase
-
-
-//protocols?
-//didSaveToFireBaseSuccessfully
-//didFetchFromFirebaseSuccessfully?
-//create a series of mkannotations related to posts received?d
+    
+}

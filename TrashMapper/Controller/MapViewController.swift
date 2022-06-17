@@ -9,9 +9,10 @@ import UIKit
 import CoreLocation
 import CoreLocationUI
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController  {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var goToUserLocation: UIBarButtonItem!
     
@@ -21,6 +22,8 @@ class MapViewController: UIViewController  {
     var locationError: Error?
     var updatingLocation: Bool = false
     var mapAnnotation: MKAnnotation?
+    
+    var managedObjectContext: NSManagedObjectContext!
     
     
     
@@ -82,15 +85,14 @@ class MapViewController: UIViewController  {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        
-        
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "AddLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
             //possible error on not getting current location vs changing to other tab
+            
+            //CoreData context pass
+            destinationVC.managedObjectContext = managedObjectContext
       }
     }
 }

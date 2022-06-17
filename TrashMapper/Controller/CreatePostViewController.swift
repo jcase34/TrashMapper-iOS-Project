@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import CoreData
 
 //Create outside viewController class to only instantiate a single formatter to be used everytime
 private let dateFormatter: DateFormatter = {
@@ -18,20 +19,23 @@ private let dateFormatter: DateFormatter = {
 
 class CreatePostViewController: UITableViewController {
     
+    //coreData vars
+    var managedObjectContext: NSManagedObjectContext!
+    
     //outlets for main screen
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var numCharsLeft: UILabel!
     
-    //grab junk photo for demonstration
-    let bundleImage: UIImage? = UIImage(named: "trash_in_park.jpg")
+//    //grab junk photo for demonstration
+//    let bundleImage: UIImage? = UIImage(named: "trash_in_park.jpg")
     
     //image variable for picker and delegates
     var image: UIImage?
     
-    //variable for segue data transfer, test post
-    var coordinate = CLLocationCoordinate2D (latitude: 0, longitude: 0)
+    var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+
     
    
     override func viewDidLoad() {
@@ -77,7 +81,7 @@ class CreatePostViewController: UITableViewController {
     
     //MARK: - Helper Methods
     func format(date: Date) -> String {
-     return dateFormatter.string(from: date)
+        return dateFormatter.string(from: date)
     }
     
     @objc func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -94,6 +98,36 @@ class CreatePostViewController: UITableViewController {
             }
         }
     }
+    
+    func saveToCoreData() {
+        let location = Location(context: managedObjectContext)
+        
+        location.longitude = coordinate.longitude
+        location.latitude = coordinate.latitude
+        location.locationDescription = descriptionTextView.text
+        location.date = Date()
+        
+        
+        do {
+            print("saving to coredata")
+            try managedObjectContext.save()
+            navigationController?.popViewController(animated: true)
+        } catch {
+            fatalError("Error \(error)")
+        }
+        
+        /*
+         To Dos:
+         Need to check for a valid picture
+         Need to check for valid description text. If none provided, then prompt user
+         Need to check for valid locations, date, etc.
+         
+         Should attempt to sync data after saving to core data, pu
+         
+         
+         Add a user notification informing them if there was an issue saving data
+         */
+    }
 }
 
 //MARK: - Data Manager Tasks (Firebase)
@@ -104,10 +138,6 @@ class CreatePostViewController: UITableViewController {
 
 //MARK: - Button functions
 extension CreatePostViewController {
-    @objc func buttonTouchDown(_ button: UIButton) {
-        print("button Touch Down")
-    }
-    
     @IBAction func addPhotoButton(_ sender: Any) {
         print("add photo tapped")
         pickPhoto()
@@ -122,10 +152,16 @@ extension CreatePostViewController {
     }
     
     @IBAction func submit(_ sender: Any) {
-        print("submit tapped")
+        
         //create a userPost (date, image, description, user info, postID, etc)
-        //push to firebase
+        //push to coreData
+        //sync with firebase?
         //HUD view with "Location Added"
+        
+        
+        
+        
+        
     }
 }
 
