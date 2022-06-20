@@ -28,3 +28,9 @@ extension Location {
 extension Location : Identifiable {
     
 }
+
+//MARK: - FireBase Sync
+extension Location {
+    
+    
+}

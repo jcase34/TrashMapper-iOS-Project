@@ -23,6 +23,7 @@ class MapViewController: UIViewController  {
     var updatingLocation: Bool = false
     var mapAnnotation: MKAnnotation?
     
+    //coreData vars
     var managedObjectContext: NSManagedObjectContext!
     
     
@@ -34,11 +35,21 @@ class MapViewController: UIViewController  {
         print("At mapviewcontroller")
         //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
         
+        
+        
+        //pull dummy data from locationsArray
+        
+        
+        
+        
         //pull data from firebase
         //load as pins on map
         //fetched posts should omit userID for privacy
         
               
+        
+        
+        
         
         /*
          Steps for adding annotations:

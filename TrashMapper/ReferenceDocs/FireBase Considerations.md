@@ -1,6 +1,6 @@
 #  Firebase Information
 
-
+**https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/
 https://stackoverflow.com/questions/58469347/realtime-database-vs-firestore
 https://www.airpair.com/firebase/posts/structuring-your-firebase-data
 https://stackoverflow.com/questions/46765999/difference-between-real-time-database-and-firestore-in-firebase
