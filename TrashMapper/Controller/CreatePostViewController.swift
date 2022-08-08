@@ -20,7 +20,7 @@ private let dateFormatter: DateFormatter = {
 class CreatePostViewController: UITableViewController {
     
     //coreData vars
-    var managedObjectContext: NSManagedObjectContext!
+//    var managedObjectContext: NSManagedObjectContext!
     
     //outlets for main screen
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -99,35 +99,36 @@ class CreatePostViewController: UITableViewController {
         }
     }
     
-    func saveToCoreData() {
-        let location = Location(context: managedObjectContext)
-        
-        location.longitude = coordinate.longitude
-        location.latitude = coordinate.latitude
-        location.locationDescription = descriptionTextView.text
-        location.date = Date()
-        
-        
-        do {
-            print("saving to coredata")
-            try managedObjectContext.save()
-            navigationController?.popViewController(animated: true)
-        } catch {
-            fatalError("Error \(error)")
-        }
-        
-        /*
-         To Dos:
-         Need to check for a valid picture
-         Need to check for valid description text. If none provided, then prompt user
-         Need to check for valid locations, date, etc.
-         
-         Should attempt to sync data after saving to core data, pu
-         
-         
-         Add a user notification informing them if there was an issue saving data
-         */
-    }
+//    CORE DATA SAVING
+//    func saveToCoreData() {
+//        let location = Location(context: managedObjectContext)
+//
+//        location.longitude = coordinate.longitude
+//        location.latitude = coordinate.latitude
+//        location.locationDescription = descriptionTextView.text
+//        location.date = Date()
+//
+//
+//        do {
+//            print("saving to coredata")
+//            try managedObjectContext.save()
+//            navigationController?.popViewController(animated: true)
+//        } catch {
+//            fatalError("Error \(error)")
+//        }
+//
+//        /*
+//         To Dos:
+//         Need to check for a valid picture
+//         Need to check for valid description text. If none provided, then prompt user
+//         Need to check for valid locations, date, etc.
+//
+//         Should attempt to sync data after saving to core data, pu
+//
+//
+//         Add a user notification informing them if there was an issue saving data
+//         */
+//    }
 }
 
 //MARK: - Data Manager Tasks (Firebase)
@@ -158,6 +159,8 @@ extension CreatePostViewController {
         //sync with firebase?
         //HUD view with "Location Added"
         
+        //Define the annotation object
+//        mapAnnotation.append(TaggedLocationAnnotation(coordinate: coordinate, title: "new post", subtitle: "\(coordinate)"))
         
         
         

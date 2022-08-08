@@ -21,11 +21,16 @@
 		8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */; };
 		8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A384284EE87000DC0434 /* UIImage+Resize.swift */; };
 		869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* CreatePostViewController.swift */; };
+		8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469928A03A2D006AF1DD /* LoginViewController.swift */; };
+		8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469B28A03B09006AF1DD /* FormUtilities.swift */; };
+		8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */; };
+		869846A628A0637B006AF1DD /* introvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 869846A528A0637B006AF1DD /* introvid.mp4 */; };
 		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
 		86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */; };
 		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
 		86CD5CAB285A6F22007BD8A9 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CAA285A6F22007BD8A9 /* Location+CoreDataClass.swift */; };
 		86CD5CAC285A6F22007BD8A9 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA9285A6F22007BD8A9 /* Location+CoreDataProperties.swift */; };
+		86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */; };
 		86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86EA4C56284E906700372ACB /* trash_in_park.jpg */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
@@ -48,11 +53,16 @@
 		8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationAnnotation.swift; sourceTree = "<group>"; };
 		8680A384284EE87000DC0434 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		869737202842BF62009B99FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		8698469928A03A2D006AF1DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8698469B28A03B09006AF1DD /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
+		8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		869846A528A0637B006AF1DD /* introvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = introvid.mp4; sourceTree = "<group>"; };
 		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C59DDD284B004F00A797A0 /* TaggedLocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationDataManager.swift; sourceTree = "<group>"; };
 		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		86CD5CA9285A6F22007BD8A9 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		86CD5CAA285A6F22007BD8A9 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
 		86EA4C56284E906700372ACB /* trash_in_park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = trash_in_park.jpg; path = TrashMapper/ReferenceDocs/trash_in_park.jpg; sourceTree = SOURCE_ROOT; };
 		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +112,7 @@
 		8625D927282EE8AA00E53C00 /* TrashMapper */ = {
 			isa = PBXGroup;
 			children = (
+				8698469F28A06046006AF1DD /* Media */,
 				86EA4C55284E8E4400372ACB /* ReferenceDocs */,
 				8684E9FA285CF4DE00D695E2 /* CoreData */,
 				86C0CE7128405517000D0B3C /* Controller */,
@@ -143,8 +154,17 @@
 			children = (
 				8680A384284EE87000DC0434 /* UIImage+Resize.swift */,
 				865D26DE2849909200707C96 /* DashedBorderView.swift */,
+				8698469B28A03B09006AF1DD /* FormUtilities.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8698469F28A06046006AF1DD /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				869846A528A0637B006AF1DD /* introvid.mp4 */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 		86C0CE6F28405505000D0B3C /* Model */ = {
@@ -170,6 +190,9 @@
 				86174BA42841434F005774AC /* MapViewController.swift */,
 				86174BA628414F6A005774AC /* UserProfileViewController.swift */,
 				869737202842BF62009B99FB /* CreatePostViewController.swift */,
+				8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */,
+				8698469928A03A2D006AF1DD /* LoginViewController.swift */,
+				86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,6 +276,7 @@
 			files = (
 				8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */,
 				86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */,
+				869846A628A0637B006AF1DD /* introvid.mp4 in Resources */,
 				8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */,
 				8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */,
 				86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */,
@@ -320,9 +344,13 @@
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
 				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,
 				86C59DDE284B004F00A797A0 /* TaggedLocationDataManager.swift in Sources */,
+				8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */,
+				86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */,
+				8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */,
 				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
 				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
 				86CD5CAC285A6F22007BD8A9 /* Location+CoreDataProperties.swift in Sources */,
+				8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

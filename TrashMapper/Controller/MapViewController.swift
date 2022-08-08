@@ -21,7 +21,13 @@ class MapViewController: UIViewController  {
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
-    var mapAnnotation: MKAnnotation?
+    
+    
+    var mapAnnotation : [MKAnnotation] = [] {
+        didSet {
+            print("map annotations updated")
+        }
+    }
     
     //coreData vars
     var managedObjectContext: NSManagedObjectContext!
@@ -68,11 +74,13 @@ class MapViewController: UIViewController  {
         
         
         //Define the annotation object
-        mapAnnotation = TaggedLocationAnnotation()
+        
+        
+        
         
         
         //add sample map annotation
-        mapView.addAnnotation(mapAnnotation!)
+        mapView.addAnnotations(mapAnnotation)
         
     
         
@@ -103,7 +111,7 @@ class MapViewController: UIViewController  {
             //possible error on not getting current location vs changing to other tab
             
             //CoreData context pass
-            destinationVC.managedObjectContext = managedObjectContext
+//            bdestinationVC.managedObjectContext = managedObjectContext
       }
     }
 }

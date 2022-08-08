@@ -19,15 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let tabController = window!.rootViewController as! UITabBarController
-        
-        if let tabViewControllers = tabController.viewControllers {
-            let navController = tabViewControllers[0] as! UINavigationController
-            
-            let controller = navController.viewControllers.first as! MapViewController
-            
-            controller.managedObjectContext = managedObjectContext
-        }
+//        let tabController = window!.rootViewController as! UITabBarController
+//        
+//        if let tabViewControllers = tabController.viewControllers {
+//            let navController = tabViewControllers[0] as! UINavigationController
+//            
+//            let controller = navController.viewControllers.first as! MapViewController
+//            
+//            controller.managedObjectContext = managedObjectContext
+//        }
         
         
     }
