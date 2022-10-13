@@ -19,7 +19,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "TrashMapper"
         // Do any additional setup after loading the view.
     }
     

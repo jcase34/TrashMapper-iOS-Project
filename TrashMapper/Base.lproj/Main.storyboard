@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-5H-usz">
-                                <rect key="frame" x="0.0" y="88" width="390" height="624"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BLY-Pw-V5U"/>
@@ -186,6 +186,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="iJS-eq-3eO">
                             <connections>
                                 <action selector="submit:" destination="CQA-6m-Vhq" id="4Mg-OA-wlY"/>
+                                <segue destination="qau-9F-KAE" kind="show" identifier="PassDataToMap" id="ntD-vN-ump"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -194,9 +195,11 @@
                         <outlet property="dateLabel" destination="ttc-t8-v5d" id="cp7-g2-sTz"/>
                         <outlet property="descriptionTextView" destination="Ugx-E5-2mG" id="XQl-VH-m1i"/>
                         <outlet property="numCharsLeft" destination="DlI-kS-VJ6" id="cZV-ao-SRA"/>
+                        <segue destination="7Nm-nY-7LN" kind="unwind" identifier="passDataToMap" unwindAction="passDataToMap:" id="YoS-33-wuP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zg0-Hf-0UO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7Nm-nY-7LN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4437.68115942029" y="-565.17857142857144"/>
         </scene>
@@ -217,7 +220,11 @@
                                             <constraint firstAttribute="height" constant="40" id="Jyd-d1-Bfz"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </backgroundConfiguration>
+                                        </buttonConfiguration>
                                         <connections>
                                             <segue destination="nvY-ZA-ctI" kind="show" id="Ehl-DE-tle"/>
                                         </connections>
@@ -225,7 +232,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-jh-uEe">
                                         <rect key="frame" x="0.0" y="60" width="310" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </backgroundConfiguration>
+                                        </buttonConfiguration>
                                         <connections>
                                             <segue destination="HGb-Wg-fWb" kind="show" id="e3p-4s-fYM"/>
                                         </connections>
@@ -235,6 +246,12 @@
                                     <constraint firstItem="3Id-jh-uEe" firstAttribute="height" secondItem="ULL-LI-G36" secondAttribute="height" multiplier="0.775" id="TqA-Dy-NpF"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TrashMapper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilU-Tn-ekI">
+                                <rect key="frame" x="87" y="88" width="217" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iEo-yL-lUG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -265,12 +282,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sVt-u9-1Fy">
                                 <rect key="frame" x="40" y="128" width="310" height="200.33333333333337"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ett-Hz-Mua">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@1.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ett-Hz-Mua">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="go9-TJ-9sB">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pass123!" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="go9-TJ-9sB">
                                         <rect key="frame" x="0.0" y="60" width="310" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -413,6 +430,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="roX-cW-Erk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="bgj-FE-Idk"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="UaT-mF-iFo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5g5-7H-D7g">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -510,6 +528,10 @@
             <point key="canvasLocation" x="578" y="-565"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="j62-xd-G1t"/>
+        <segue reference="ntD-vN-ump"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>

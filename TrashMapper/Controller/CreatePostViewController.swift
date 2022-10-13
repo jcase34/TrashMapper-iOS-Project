@@ -28,14 +28,11 @@ class CreatePostViewController: UITableViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var numCharsLeft: UILabel!
     
-//    //grab junk photo for demonstration
-//    let bundleImage: UIImage? = UIImage(named: "trash_in_park.jpg")
     
     //image variable for picker and delegates
     var image: UIImage?
-    
+    var keyLocation: TaggedLocationAnnotation!
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-
     
    
     override func viewDidLoad() {
@@ -48,6 +45,7 @@ class CreatePostViewController: UITableViewController {
         tableView.addGestureRecognizer(gestureRecognizer)
         
         //Load information for a bogus/test location
+        
         dateLabel.text = format(date: Date())
         //UITextView Setup
         descriptionTextView.text = K.descriptionTextFieldText
@@ -68,16 +66,17 @@ class CreatePostViewController: UITableViewController {
         //App Looks better in white for demonstration
         //Update later with custom Xibs, colors, etc.
         
-    
-        
     }
     
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = K.createPostViewTitle
     }
+    
+    
+    
     
     //MARK: - Helper Methods
     func format(date: Date) -> String {
@@ -98,46 +97,15 @@ class CreatePostViewController: UITableViewController {
             }
         }
     }
-    
-//    CORE DATA SAVING
-//    func saveToCoreData() {
-//        let location = Location(context: managedObjectContext)
-//
-//        location.longitude = coordinate.longitude
-//        location.latitude = coordinate.latitude
-//        location.locationDescription = descriptionTextView.text
-//        location.date = Date()
-//
-//
-//        do {
-//            print("saving to coredata")
-//            try managedObjectContext.save()
-//            navigationController?.popViewController(animated: true)
-//        } catch {
-//            fatalError("Error \(error)")
-//        }
-//
-//        /*
-//         To Dos:
-//         Need to check for a valid picture
-//         Need to check for valid description text. If none provided, then prompt user
-//         Need to check for valid locations, date, etc.
-//
-//         Should attempt to sync data after saving to core data, pu
-//
-//
-//         Add a user notification informing them if there was an issue saving data
-//         */
-//    }
 }
 
 //MARK: - Data Manager Tasks (Firebase)
 /*
- 
+
  
  */
 
-//MARK: - Button functions
+//MARK: - UIButton functions
 extension CreatePostViewController {
     @IBAction func addPhotoButton(_ sender: Any) {
         print("add photo tapped")
@@ -154,17 +122,16 @@ extension CreatePostViewController {
     
     @IBAction func submit(_ sender: Any) {
         
-        //create a userPost (date, image, description, user info, postID, etc)
-        //push to coreData
-        //sync with firebase?
-        //HUD view with "Location Added"
-        
-        //Define the annotation object
-//        mapAnnotation.append(TaggedLocationAnnotation(coordinate: coordinate, title: "new post", subtitle: "\(coordinate)"))
-        
-        
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepping for segue, identifier = \(String(describing: segue.identifier))")
+        keyLocation = TaggedLocationAnnotation(coordinate: coordinate, title: dateLabel.text!, subtitle: descriptionTextView.text!)
+        if segue.identifier == "PassDataToMap" {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.mapAnnotation.append(keyLocation)
+            //possible error on not getting current location vs changing to other tab
+      }
     }
 }
 
@@ -190,6 +157,7 @@ extension CreatePostViewController : UIImagePickerControllerDelegate, UINavigati
         if let theImage = image {
             //display photo within button "addPhoto"
             displayImageOnButton(theImage)
+            
             
             /*
              To Dos:

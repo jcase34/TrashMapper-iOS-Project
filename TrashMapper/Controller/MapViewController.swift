@@ -29,11 +29,6 @@ class MapViewController: UIViewController  {
         }
     }
     
-    //coreData vars
-    var managedObjectContext: NSManagedObjectContext!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,20 +36,7 @@ class MapViewController: UIViewController  {
         print("At mapviewcontroller")
         //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
         
-        
-        
         //pull dummy data from locationsArray
-        
-        
-        
-        
-        //pull data from firebase
-        //load as pins on map
-        //fetched posts should omit userID for privacy
-        
-              
-        
-        
         
         
         /*
@@ -73,16 +55,9 @@ class MapViewController: UIViewController  {
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(TaggedLocationAnnotation.self))
         
         
-        //Define the annotation object
-        
-        
-        
-        
-        
         //add sample map annotation
         mapView.addAnnotations(mapAnnotation)
         
-    
         
         
     }
@@ -109,9 +84,6 @@ class MapViewController: UIViewController  {
             let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
             //possible error on not getting current location vs changing to other tab
-            
-            //CoreData context pass
-//            bdestinationVC.managedObjectContext = managedObjectContext
       }
     }
 }
