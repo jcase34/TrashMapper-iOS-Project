@@ -34,7 +34,6 @@ class SignUpViewController : UIViewController {
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
-        
         return nil
         
     }
@@ -49,7 +48,6 @@ class SignUpViewController : UIViewController {
             
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let pw = (passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
-            
             
             
             Auth.auth().createUser(withEmail: email, password: pw) { (result, err) in

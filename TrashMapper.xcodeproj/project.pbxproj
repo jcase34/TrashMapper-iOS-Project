@@ -10,6 +10,7 @@
 		86174BA52841434F005774AC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA42841434F005774AC /* MapViewController.swift */; };
 		86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA628414F6A005774AC /* UserProfileViewController.swift */; };
 		86174BA928415EA3005774AC /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA828415EA3005774AC /* PostModel.swift */; };
+		8619B39728FDFC6C00F84DD9 /* map-points.json in Resources */ = {isa = PBXBuildFile; fileRef = 8619B39628FDFC6C00F84DD9 /* map-points.json */; };
 		8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D928282EE8AA00E53C00 /* AppDelegate.swift */; };
 		8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */; };
 		8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D92E282EE8AA00E53C00 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		86174BA42841434F005774AC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		86174BA628414F6A005774AC /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		86174BA828415EA3005774AC /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		8619B39628FDFC6C00F84DD9 /* map-points.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-points.json"; sourceTree = "<group>"; };
 		8625D925282EE8AA00E53C00 /* TrashMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8625D928282EE8AA00E53C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				86EA4C54284E6A6300372ACB /* FireBase Considerations.md */,
 				86EA4C56284E906700372ACB /* trash_in_park.jpg */,
+				8619B39628FDFC6C00F84DD9 /* map-points.json */,
 			);
 			path = ReferenceDocs;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8619B39728FDFC6C00F84DD9 /* map-points.json in Resources */,
 				8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */,
 				86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */,
 				869846A628A0637B006AF1DD /* introvid.mp4 in Resources */,

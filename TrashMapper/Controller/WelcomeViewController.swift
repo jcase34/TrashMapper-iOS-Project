@@ -6,47 +6,59 @@
 //
 
 import UIKit
-import AVKit
+import Lottie
 
 class WelcomeViewController: UIViewController {
-    
-    var videoPlayer: AVPlayer?
-    
-    var videoPlayerLayer: AVPlayerLayer?
-    
+        
     @IBOutlet weak var signUpButton: UIButton!
+    
     @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var welcomeTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "TrashMapper"
+        setupElements()
+        setupLottie()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUpVideo()
+        super.viewDidAppear(animated)
+        welcomeTitle.center.x -= view.bounds.width
+        
+    }
+    
+    func setupBackground() {
+        self.view.backgroundColor = .systemBlue
+        
     }
     
 
-    func setUpVideo() {
+    func setupLottie() {
+        self.view.backgroundColor = .systemBlue
+        let mapAnimationView = AnimationView()
+        /// Some time later
+        let mapAnimation = Animation.named("map-points")
+        mapAnimationView.animation = mapAnimation
+        mapAnimationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        mapAnimationView.center = self.view.center
+        mapAnimationView.contentMode = .scaleAspectFill
         
-        let bundlePath = Bundle.main.path(forResource: "introvid", ofType: "mp4")
-        guard bundlePath != nil else {return}
-        print(bundlePath)
-        let url = URL(fileURLWithPath: bundlePath!)
-        let item = AVPlayerItem(url: url)
-
-        videoPlayer = AVPlayer(playerItem: item)
-
+        self.view.addSubview(mapAnimationView)
         
-        videoPlayerLayer = AVPlayerLayer(player: videoPlayer)
+        mapAnimationView.play()
+    }
+    
+    func setupElements() {
+        setupBackground()
+        UIView.animate(withDuration: 0.5) {
+          self.welcomeTitle.center.x += self.view.bounds.width
+        }
         
-        videoPlayerLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        
-        view.layer.insertSublayer(videoPlayerLayer!, at: 0)
-        
-        videoPlayer?.playImmediately(atRate: 0.8)
-        
+        FormUtlities.setTextColor(welcomeTitle)
+        FormUtlities.styleFilledButton(signUpButton)
+        FormUtlities.styleHallowButton(loginButton)
     }
     
     

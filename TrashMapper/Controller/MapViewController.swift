@@ -109,6 +109,7 @@ extension MapViewController : MKMapViewDelegate {
      
      */
     
+    //"Map View For" gets called for every annotation that needs to be added to the map
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         //continue on if the annoatation to be added is not a user location
@@ -141,15 +142,13 @@ extension MapViewController : MKMapViewDelegate {
             markerAnnotationView.animatesWhenAdded = true
             markerAnnotationView.canShowCallout = true
             markerAnnotationView.markerTintColor = UIColor.purple
+
+//            // Provide an image view to use as the accessory view's detail view.
+//            let pinImage = UIImage(named: "trash_in_park.jpg")
+//            let newPinImage = pinImage?.resized(withBounds: CGSize(width: 100, height: 100))
             
-            
-            
-            // Provide an image view to use as the accessory view's detail view.
-            let pinImage = UIImage(named: "trash_in_park.jpg")
-            let newPinImage = pinImage?.resized(withBounds: CGSize(width: 100, height: 100))
-            
-            
-            markerAnnotationView.detailCalloutAccessoryView = UIImageView(image: newPinImage)
+//
+//            markerAnnotationView.detailCalloutAccessoryView = UIImageView(image: newPinImage)
         }
         
         return annotationView

@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="qau-9F-KAE" userLabel="MapViewController" customClass="MapViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Di0-V8-jPw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-5H-usz">
-                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="741"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BLY-Pw-V5U"/>
@@ -57,7 +57,7 @@
             <objects>
                 <tableViewController id="CQA-6m-Vhq" userLabel="CreatePostViewController" customClass="CreatePostViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="S3Y-pD-yMv">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -211,8 +211,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrashMapper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilU-Tn-ekI">
+                                <rect key="frame" x="85" y="188" width="220" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="31e-8w-u5a"/>
+                                    <constraint firstAttribute="height" constant="45" id="j6k-3t-1Cs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fvf-JE-eqa">
-                                <rect key="frame" x="40" y="679" width="310" height="91"/>
+                                <rect key="frame" x="40" y="669" width="310" height="101"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-LI-G36">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
@@ -220,43 +229,31 @@
                                             <constraint firstAttribute="height" constant="40" id="Jyd-d1-Bfz"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                         <connections>
                                             <segue destination="nvY-ZA-ctI" kind="show" id="Ehl-DE-tle"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-jh-uEe">
-                                        <rect key="frame" x="0.0" y="60" width="310" height="31"/>
+                                        <rect key="frame" x="0.0" y="60" width="310" height="41"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Login">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                         <connections>
                                             <segue destination="HGb-Wg-fWb" kind="show" id="e3p-4s-fYM"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3Id-jh-uEe" firstAttribute="height" secondItem="ULL-LI-G36" secondAttribute="height" multiplier="0.775" id="TqA-Dy-NpF"/>
+                                    <constraint firstItem="3Id-jh-uEe" firstAttribute="height" secondItem="ULL-LI-G36" secondAttribute="height" multiplier="0.775" constant="10" id="TqA-Dy-NpF"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TrashMapper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilU-Tn-ekI">
-                                <rect key="frame" x="87" y="88" width="217" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iEo-yL-lUG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ilU-Tn-ekI" firstAttribute="top" secondItem="iEo-yL-lUG" secondAttribute="top" constant="100" id="9dI-oi-6Hz"/>
                             <constraint firstItem="iEo-yL-lUG" firstAttribute="bottom" secondItem="Fvf-JE-eqa" secondAttribute="bottom" constant="40" id="B8S-mN-Zma"/>
+                            <constraint firstItem="ilU-Tn-ekI" firstAttribute="centerX" secondItem="G2i-Od-Lbo" secondAttribute="centerX" id="Lne-4f-ULy"/>
                             <constraint firstItem="iEo-yL-lUG" firstAttribute="trailing" secondItem="Fvf-JE-eqa" secondAttribute="trailing" constant="40" id="bmw-es-WlB"/>
                             <constraint firstItem="Fvf-JE-eqa" firstAttribute="leading" secondItem="iEo-yL-lUG" secondAttribute="leading" constant="40" id="dhb-Nf-Vhf"/>
                         </constraints>
@@ -265,6 +262,7 @@
                     <connections>
                         <outlet property="loginButton" destination="3Id-jh-uEe" id="ING-ge-ZZk"/>
                         <outlet property="signUpButton" destination="ULL-LI-G36" id="HdO-lF-P2S"/>
+                        <outlet property="welcomeTitle" destination="ilU-Tn-ekI" id="Tq7-O4-2W3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyf-4g-wIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,7 +527,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j62-xd-G1t"/>
         <segue reference="ntD-vN-ump"/>
     </inferredMetricsTieBreakers>
     <resources>

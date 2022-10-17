@@ -43,12 +43,8 @@ class LoginViewController: UIViewController {
                 } else {
                     self.transitionToHome()
                 }
-                
             }
-        
         }
-        
-        
     }
         
     func showError(_ message:String) {
@@ -60,13 +56,10 @@ class LoginViewController: UIViewController {
     func validateFields() -> String? {
         
         //chekc that all fields are filled in
-        
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
-        
         return nil
-        
     }
     
     func transitionToHome() {
@@ -80,7 +73,9 @@ class LoginViewController: UIViewController {
     func setUpElements() {
         //hide error label
         errorLabel.alpha = 0
-        
-        
+        self.view.backgroundColor = .white
+        FormUtlities.styleTextField(emailTextField)
+        FormUtlities.styleTextField(passwordTextField)
+
     }
 }
