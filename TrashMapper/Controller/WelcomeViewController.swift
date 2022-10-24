@@ -34,7 +34,6 @@ class WelcomeViewController: UIViewController {
         
     }
     
-
     func setupLottie() {
         self.view.backgroundColor = .systemBlue
         let mapAnimationView = AnimationView()
@@ -52,7 +51,7 @@ class WelcomeViewController: UIViewController {
     
     func setupElements() {
         setupBackground()
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 1) {
           self.welcomeTitle.center.x += self.view.bounds.width
         }
         

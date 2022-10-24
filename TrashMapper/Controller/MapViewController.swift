@@ -17,7 +17,12 @@ class MapViewController: UIViewController  {
     @IBOutlet weak var goToUserLocation: UIBarButtonItem!
     
     var locationManager = CLLocationManager()
-    var location: CLLocation?
+    var location: CLLocation? = nil {
+        didSet {
+            print("valid location found")
+            zoomUserLocation()
+        }
+    }
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
@@ -34,39 +39,18 @@ class MapViewController: UIViewController  {
 
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
-        //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(zoomUserLocation), userInfo: nil, repeats: false)
-        
-        //pull dummy data from locationsArray
-        
-        
-        /*
-         Steps for adding annotations:
-         1.) Define annotation object
-         2.) Define annotation view
-         3.) Implement "viewFor annotation" delegate method
-         4.) Add annotation object
-         
-         */
-        
+
         //set the current view controller as the delegate for mapView
         mapView.delegate = self
+        getLocation()
         
-        //register taggedLocationAnnotation as an MKMarkerAnnotation
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(TaggedLocationAnnotation.self))
-        
+        //register TaggedView
+        mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         //add sample map annotation
         mapView.addAnnotations(mapAnnotation)
-        
-        
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getLocation()
-    }
-    
+        
     
     //MARK: - Helper Methods
     func showLocationServicesDeniedAlert() {
@@ -79,6 +63,7 @@ class MapViewController: UIViewController  {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard location != nil else {return}
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "AddLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
@@ -90,70 +75,7 @@ class MapViewController: UIViewController  {
 
 //MARK: - MapViewDelegate
 extension MapViewController : MKMapViewDelegate {
-    /*
-     Steps for adding annotations:
-     1.) Define annotation object
-     2.) Define annotation view
-     3.) Implement "viewFor annotation" delegate method
-     4.) Add annotation object
-     
-     
-     Steps in Swift:
-     Assign a delegate
-     Register any custom annontation objects
-     Create custom objects
-     Add the object using addAnnotation -> Calls the viewFor annotation method
-     
-        viewFor Annotation:
-            Take the object annotation data, create a view, and return it to the viewController to be added to the mapView.
-     
-     */
-    
-    //"Map View For" gets called for every annotation that needs to be added to the map
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        //continue on if the annoatation to be added is not a user location
-        guard !annotation.isKind(of: MKUserLocation.self) else {
-            return nil
-        }
-        
-        var annotationView: MKAnnotationView?
-        
-        if let annotation = annotation as? TaggedLocationAnnotation {
-            annotationView = setupTaggedLocationAnnotation(for: annotation, on: mapView)
-        }
-        
-        return annotationView
-    }
-    
-    //****************************
-    private func setupTaggedLocationAnnotation(for annotation: TaggedLocationAnnotation, on mapView: MKMapView) -> MKAnnotationView {
-        
-        //identifier is the custom TaggedLocationAnnotation class
-        let identifier = NSStringFromClass(TaggedLocationAnnotation.self)
-        
-        //re-use annotations by dequeuing
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
-        
-        //cast the annotationView as a MKMarkerAnnotation
-        if let markerAnnotationView = annotationView as? MKMarkerAnnotationView {
-            
-            //MkMarkerAnnotation allows customization
-            markerAnnotationView.animatesWhenAdded = true
-            markerAnnotationView.canShowCallout = true
-            markerAnnotationView.markerTintColor = UIColor.purple
-
-//            // Provide an image view to use as the accessory view's detail view.
-//            let pinImage = UIImage(named: "trash_in_park.jpg")
-//            let newPinImage = pinImage?.resized(withBounds: CGSize(width: 100, height: 100))
-            
-//
-//            markerAnnotationView.detailCalloutAccessoryView = UIImageView(image: newPinImage)
-        }
-        
-        return annotationView
-    }
-    
+   
 }
 
 
@@ -167,8 +89,6 @@ extension MapViewController : CLLocationManagerDelegate {
      or any other functionality
      
      */
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error.localizedDescription)")
@@ -255,6 +175,7 @@ extension MapViewController : CLLocationManagerDelegate {
     }
     
     func startLocationManager() {
+        print("getting lcoation")
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -271,14 +192,12 @@ extension MapViewController : CLLocationManagerDelegate {
     }
     
     @objc func zoomUserLocation() {
-        let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        guard location != nil else {return}
+        let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(mapView.regionThatFits(region), animated: true)
         print("Zooming to user location")
     }
-    
-    
-    
-    
+
     @objc func didTimeOut() {
         print("***Time Out***")
         if location == nil {
@@ -307,6 +226,4 @@ extension MapViewController : CLLocationManagerDelegate {
         }
         print(statusMessage)
     }
-
-    
 }

@@ -30,7 +30,7 @@
 		86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* LocationDataManager.swift */; };
 		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
 		86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */; };
-		86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86EA4C56284E906700372ACB /* trash_in_park.jpg */; };
+		86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F34708290331F500651C8C /* TaggedLocationView.swift */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +62,7 @@
 		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
-		86EA4C56284E906700372ACB /* trash_in_park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = trash_in_park.jpg; path = TrashMapper/ReferenceDocs/trash_in_park.jpg; sourceTree = SOURCE_ROOT; };
+		86F34708290331F500651C8C /* TaggedLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationView.swift; sourceTree = "<group>"; };
 		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
 		FF6CDFED9D78ACBF04D40830 /* Pods-TrashMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.debug.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +161,7 @@
 				86174BA828415EA3005774AC /* PostModel.swift */,
 				86C59DDD284B004F00A797A0 /* LocationDataManager.swift */,
 				8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */,
+				86F34708290331F500651C8C /* TaggedLocationView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				86EA4C54284E6A6300372ACB /* FireBase Considerations.md */,
-				86EA4C56284E906700372ACB /* trash_in_park.jpg */,
 				8619B39628FDFC6C00F84DD9 /* map-points.json */,
 			);
 			path = ReferenceDocs;
@@ -269,7 +269,6 @@
 				869846A628A0637B006AF1DD /* introvid.mp4 in Resources */,
 				8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */,
 				8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */,
-				86EA4C57284E906700372ACB /* trash_in_park.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +338,7 @@
 				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
 				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
 				8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */,
+				86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

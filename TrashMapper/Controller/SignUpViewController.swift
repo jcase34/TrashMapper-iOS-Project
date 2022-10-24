@@ -35,7 +35,6 @@ class SignUpViewController : UIViewController {
             return "Please fill in all fields."
         }
         return nil
-        
     }
     
     @IBAction func signUpTap(_ sender: Any) {
@@ -67,11 +66,6 @@ class SignUpViewController : UIViewController {
                 }
             }
         }
-        
-        
-        //transition
-        
-        
     }
     
     func transitionToHome() {
@@ -90,7 +84,9 @@ class SignUpViewController : UIViewController {
     func setUpElements() {
         //hide error label
         errorLabel.alpha = 0
-        
+        self.view.backgroundColor = .white
+        FormUtlities.styleTextField(emailTextField)
+        FormUtlities.styleTextField(passwordTextField)
         
     }
     
