@@ -20,19 +20,17 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         setupElements()
         setupLottie()
+        welcomeTitle.center.x -= view.bounds.width
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        welcomeTitle.center.x -= view.bounds.width
+        
         
     }
     
-    func setupBackground() {
-        self.view.backgroundColor = .systemBlue
-        
-    }
     
     func setupLottie() {
         self.view.backgroundColor = .systemBlue
@@ -50,14 +48,15 @@ class WelcomeViewController: UIViewController {
     }
     
     func setupElements() {
-        setupBackground()
+        FormUtlities.setTextColor(welcomeTitle)
+        FormUtlities.styleFilledButton(signUpButton)
+        FormUtlities.styleHallowButton(loginButton)
+        FormUtlities.setupBackgroundColor(self.view)
         UIView.animate(withDuration: 1) {
           self.welcomeTitle.center.x += self.view.bounds.width
         }
         
-        FormUtlities.setTextColor(welcomeTitle)
-        FormUtlities.styleFilledButton(signUpButton)
-        FormUtlities.styleHallowButton(loginButton)
+        
     }
     
     

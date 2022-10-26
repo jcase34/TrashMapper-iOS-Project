@@ -14,19 +14,13 @@ import CoreData
 class MapViewController: UIViewController  {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var goToUserLocation: UIBarButtonItem!
+    @IBOutlet weak var zoomToUser: UIBarButtonItem!
     
     var locationManager = CLLocationManager()
-    var location: CLLocation? = nil {
-        didSet {
-            print("valid location found")
-            zoomUserLocation()
-        }
-    }
+    var location: CLLocation?
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
-    
     
     var mapAnnotation : [MKAnnotation] = [] {
         didSet {
@@ -39,7 +33,11 @@ class MapViewController: UIViewController  {
 
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
-
+        FormUtlities.setupBackgroundColor(self.view)
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)]
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
+        
         //set the current view controller as the delegate for mapView
         mapView.delegate = self
         getLocation()
@@ -48,9 +46,13 @@ class MapViewController: UIViewController  {
         mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         //add sample map annotation
+        print("annots added")
         mapView.addAnnotations(mapAnnotation)
     }
         
+    @IBAction func zoomToUser(_ sender: Any) {
+        zoomUserLocation()
+    }
     
     //MARK: - Helper Methods
     func showLocationServicesDeniedAlert() {
@@ -63,9 +65,10 @@ class MapViewController: UIViewController  {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        getLocation()
         guard location != nil else {return}
-        print("prepping for segue, identifier = \(String(describing: segue.identifier))")
-        if segue.identifier == "AddLocation" {
+        print("prepping for segue, identifier = \(String(describing: "addLocation"))")
+        if segue.identifier == "addLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
             //possible error on not getting current location vs changing to other tab
@@ -186,12 +189,9 @@ extension MapViewController : CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func goToUserLocation(_ sender: Any) {
-        print("zoom to user tapped")
-        zoomUserLocation()
-    }
     
-    @objc func zoomUserLocation() {
+    func zoomUserLocation() {
+        print(location?.coordinate)
         guard location != nil else {return}
         let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(mapView.regionThatFits(region), animated: true)

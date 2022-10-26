@@ -73,9 +73,10 @@ class LoginViewController: UIViewController {
     func setUpElements() {
         //hide error label
         errorLabel.alpha = 0
-        self.view.backgroundColor = .white
-        FormUtlities.styleTextField(emailTextField)
-        FormUtlities.styleTextField(passwordTextField)
+        FormUtlities.styleRegularButton(loginButton)
+        FormUtlities.styleEmailPlaceHolderTextField(emailTextField)
+        FormUtlities.stylePasswordPlaceHolderTextField(passwordTextField)
+        FormUtlities.setupBackgroundColor(self.view)
 
     }
 }

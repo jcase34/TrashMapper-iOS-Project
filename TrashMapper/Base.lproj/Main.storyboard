@@ -31,21 +31,21 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="TrashMapper" id="qi6-qL-fOI">
-                        <barButtonItem key="leftBarButtonItem" title="currentLocation" image="location.circle.fill" catalog="system" id="BFs-YP-Wli">
+                        <barButtonItem key="leftBarButtonItem" title="zoomToUser" image="paperplane" catalog="system" id="1dY-Dj-QA1">
                             <connections>
-                                <action selector="goToUserLocation:" destination="qau-9F-KAE" id="Vi9-Bu-FgW"/>
+                                <action selector="zoomToUser:" destination="qau-9F-KAE" id="ajk-jz-HwD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="addButton" image="plus.app" catalog="system" id="qe8-Pe-PER">
+                        <barButtonItem key="rightBarButtonItem" title="addLocation" image="plus.square.dashed" catalog="system" id="p9e-7k-8th">
                             <connections>
-                                <segue destination="CQA-6m-Vhq" kind="show" identifier="AddLocation" id="j62-xd-G1t"/>
+                                <segue destination="CQA-6m-Vhq" kind="show" identifier="addLocation" id="aQ1-BQ-rEb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="goToUserLocation" destination="BFs-YP-Wli" id="JsS-Qn-dZ4"/>
                         <outlet property="mapView" destination="6fX-5H-usz" id="v6s-zy-w3a"/>
+                        <outlet property="zoomToUser" destination="1dY-Dj-QA1" id="sh5-PI-ZUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjl-rA-H8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,8 +155,7 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ugx-E5-2mG" userLabel="descriptionTextView">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="100"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <color key="textColor" systemColor="quaternarySystemFillColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -186,7 +185,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="iJS-eq-3eO">
                             <connections>
                                 <action selector="submit:" destination="CQA-6m-Vhq" id="4Mg-OA-wlY"/>
-                                <segue destination="qau-9F-KAE" kind="show" identifier="PassDataToMap" id="ntD-vN-ump"/>
+                                <segue destination="qau-9F-KAE" kind="show" identifier="PassDataToMap" id="rdY-VK-KS3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -218,6 +217,7 @@
                                     <constraint firstAttribute="height" constant="45" id="j6k-3t-1Cs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fvf-JE-eqa">
@@ -337,7 +337,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Bk1-Im-8Lc">
             <objects>
-                <tabBarController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="a4G-s7-aEl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="a4G-s7-aEl" customClass="TabBarController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="n57-va-WCW"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zDp-NR-U57">
@@ -376,7 +376,7 @@
         <!--UserProfileViewController-->
         <scene sceneID="U0V-ps-Utc">
             <objects>
-                <tableViewController id="Z4a-L4-8TS" userLabel="UserProfileViewController" sceneMemberID="viewController">
+                <tableViewController id="Z4a-L4-8TS" userLabel="UserProfileViewController" customClass="UserProfileViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Y2D-uF-lgA">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -527,16 +527,16 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ntD-vN-ump"/>
+        <segue reference="rdY-VK-KS3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
+        <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="plus.app" catalog="system" width="128" height="114"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="plus.square.dashed" catalog="system" width="128" height="114"/>
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

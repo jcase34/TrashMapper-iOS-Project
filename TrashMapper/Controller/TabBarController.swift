@@ -1,20 +1,20 @@
 //
-//  UserProfileViewController.swift
+//  TabBarController.swift
 //  TrashMapper
 //
-//  Created by Jacob Case on 5/27/22.
+//  Created by Jacob Case on 10/26/22.
 //
 
 import UIKit
 
-class UserProfileViewController: UITableViewController {
+class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        print("at userprofile controller")
-        FormUtlities.setupBackgroundColor(self.view)
+        UITabBar.appearance().tintColor = FormUtlities.mainColor
+        UITabBar.appearance().unselectedItemTintColor = FormUtlities.mainColor
+        
     }
     
 

@@ -26,6 +26,7 @@
 		8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469B28A03B09006AF1DD /* FormUtilities.swift */; };
 		8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */; };
 		869846A628A0637B006AF1DD /* introvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 869846A528A0637B006AF1DD /* introvid.mp4 */; };
+		86A866982909ED0400215D8A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A866972909ED0400215D8A /* TabBarController.swift */; };
 		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
 		86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* LocationDataManager.swift */; };
 		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
@@ -57,6 +58,7 @@
 		8698469B28A03B09006AF1DD /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
 		8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		869846A528A0637B006AF1DD /* introvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = introvid.mp4; sourceTree = "<group>"; };
+		86A866972909ED0400215D8A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C59DDD284B004F00A797A0 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
 		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */,
 				8698469928A03A2D006AF1DD /* LoginViewController.swift */,
 				86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */,
+				86A866972909ED0400215D8A /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
 				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,
+				86A866982909ED0400215D8A /* TabBarController.swift in Sources */,
 				86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */,
 				8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */,
 				86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */,
@@ -489,7 +493,9 @@
 				DEVELOPMENT_TEAM = VHMFV6J7GZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrashMapper/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use location to store user submitted posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -521,7 +527,9 @@
 				DEVELOPMENT_TEAM = VHMFV6J7GZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrashMapper/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use location to store user submitted posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -38,7 +38,17 @@ class CreatePostViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.title = K.createPostViewTitle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)]
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
+        print("At create post")
+        print(coordinate)
+        FormUtlities.setupBackgroundColor(self.view)
+        
         //create gesture recognizer for tap outside of UITextView
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
@@ -71,8 +81,8 @@ class CreatePostViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-        navigationItem.title = K.createPostViewTitle
+        
+        
     }
     
     
