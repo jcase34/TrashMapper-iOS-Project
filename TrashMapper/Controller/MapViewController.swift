@@ -39,8 +39,9 @@ class MapViewController: UIViewController  {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         
         //set the current view controller as the delegate for mapView
-        mapView.delegate = self
         getLocation()
+        mapView.delegate = self
+        
         
         //register TaggedView
         mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
@@ -65,9 +66,8 @@ class MapViewController: UIViewController  {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        getLocation()
         guard location != nil else {return}
-        print("prepping for segue, identifier = \(String(describing: "addLocation"))")
+        print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "addLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
@@ -127,13 +127,14 @@ extension MapViewController : CLLocationManagerDelegate {
             //new location to be used, clear error
             locationError = nil
             location = newLocation
+            
+            //current location and new location accuracy the same, stop updating location
+            if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+                print("locations similar")
+                stopLocationManager()
+            }
         }
         
-        //current location and new location accuracy the same, stop updating location
-        if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-            print("locations similar")
-            stopLocationManager()
-        }
         getStatus()
  
     }
@@ -168,6 +169,7 @@ extension MapViewController : CLLocationManagerDelegate {
         }
         
         if updatingLocation {
+            print(location!)
             stopLocationManager()
         } else {
             getStatus()
@@ -191,7 +193,6 @@ extension MapViewController : CLLocationManagerDelegate {
     
     
     func zoomUserLocation() {
-        print(location?.coordinate)
         guard location != nil else {return}
         let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(mapView.regionThatFits(region), animated: true)

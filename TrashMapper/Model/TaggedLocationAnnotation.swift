@@ -28,6 +28,6 @@ class TaggedLocationAnnotation: NSObject, MKAnnotation {
         super.init()
     }
     
-    var image = UIImage(systemName: "trash")
+    var image = UIImage(named: "Trashcan")
     
 }

@@ -32,7 +32,7 @@ class CreatePostViewController: UITableViewController {
     //image variable for picker and delegates
     var image: UIImage?
     var keyLocation: TaggedLocationAnnotation!
-    var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var coordinate: CLLocationCoordinate2D?
     
    
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class CreatePostViewController: UITableViewController {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
         print("At create post")
-        print(coordinate)
+        print(coordinate!)
         FormUtlities.setupBackgroundColor(self.view)
         
         //create gesture recognizer for tap outside of UITextView
@@ -136,7 +136,8 @@ extension CreatePostViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
-        keyLocation = TaggedLocationAnnotation(coordinate: coordinate, title: dateLabel.text!, subtitle: descriptionTextView.text!)
+        keyLocation = TaggedLocationAnnotation(coordinate: coordinate!, title: dateLabel.text!, subtitle: descriptionTextView.text!)
+        print(keyLocation.coordinate)
         if segue.identifier == "PassDataToMap" {
             let destinationVC = segue.destination as! MapViewController
             destinationVC.mapAnnotation.append(keyLocation)

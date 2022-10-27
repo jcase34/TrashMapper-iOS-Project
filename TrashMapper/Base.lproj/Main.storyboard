@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="qau-9F-KAE" userLabel="MapViewController" customClass="MapViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Di0-V8-jPw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-5H-usz">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="741"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BLY-Pw-V5U"/>
@@ -57,7 +57,7 @@
             <objects>
                 <tableViewController id="CQA-6m-Vhq" userLabel="CreatePostViewController" customClass="CreatePostViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="S3Y-pD-yMv">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -527,6 +527,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="aQ1-BQ-rEb"/>
         <segue reference="rdY-VK-KS3"/>
     </inferredMetricsTieBreakers>
     <resources>
