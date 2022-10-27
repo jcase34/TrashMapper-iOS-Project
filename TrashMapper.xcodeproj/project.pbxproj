@@ -7,25 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86174BA52841434F005774AC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA42841434F005774AC /* MapViewController.swift */; };
+		86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA628414F6A005774AC /* UserProfileViewController.swift */; };
+		86174BA928415EA3005774AC /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86174BA828415EA3005774AC /* PostModel.swift */; };
+		8619B39728FDFC6C00F84DD9 /* map-points.json in Resources */ = {isa = PBXBuildFile; fileRef = 8619B39628FDFC6C00F84DD9 /* map-points.json */; };
 		8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D928282EE8AA00E53C00 /* AppDelegate.swift */; };
 		8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */; };
-		8625D92D282EE8AA00E53C00 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */; };
 		8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D92E282EE8AA00E53C00 /* Main.storyboard */; };
 		8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8625D931282EE8AA00E53C00 /* TrashMapper.xcdatamodeld */; };
 		8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8625D934282EE8AC00E53C00 /* Assets.xcassets */; };
 		8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D936282EE8AC00E53C00 /* LaunchScreen.storyboard */; };
+		865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D26DE2849909200707C96 /* DashedBorderView.swift */; };
+		86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86740B0628404ACA00161DAA /* GoogleService-Info.plist */; };
+		8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */; };
+		8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A384284EE87000DC0434 /* UIImage+Resize.swift */; };
+		869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869737202842BF62009B99FB /* CreatePostViewController.swift */; };
+		8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469928A03A2D006AF1DD /* LoginViewController.swift */; };
+		8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469B28A03B09006AF1DD /* FormUtilities.swift */; };
+		8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */; };
+		869846A628A0637B006AF1DD /* introvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 869846A528A0637B006AF1DD /* introvid.mp4 */; };
+		86A866982909ED0400215D8A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A866972909ED0400215D8A /* TabBarController.swift */; };
+		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
+		86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* LocationDataManager.swift */; };
+		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
+		86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */; };
+		86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F34708290331F500651C8C /* TaggedLocationView.swift */; };
+		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86174BA42841434F005774AC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		86174BA628414F6A005774AC /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		86174BA828415EA3005774AC /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		8619B39628FDFC6C00F84DD9 /* map-points.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-points.json"; sourceTree = "<group>"; };
 		8625D925282EE8AA00E53C00 /* TrashMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8625D928282EE8AA00E53C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		8625D92F282EE8AA00E53C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8625D932282EE8AA00E53C00 /* TrashMapper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrashMapper.xcdatamodel; sourceTree = "<group>"; };
 		8625D934282EE8AC00E53C00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8625D937282EE8AC00E53C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8625D939282EE8AC00E53C00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		865D26DE2849909200707C96 /* DashedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedBorderView.swift; sourceTree = "<group>"; };
+		86740B0628404ACA00161DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationAnnotation.swift; sourceTree = "<group>"; };
+		8680A384284EE87000DC0434 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		869737202842BF62009B99FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		8698469928A03A2D006AF1DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8698469B28A03B09006AF1DD /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
+		8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		869846A528A0637B006AF1DD /* introvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = introvid.mp4; sourceTree = "<group>"; };
+		86A866972909ED0400215D8A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		86C59DDD284B004F00A797A0 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
+		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
+		86F34708290331F500651C8C /* TaggedLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationView.swift; sourceTree = "<group>"; };
+		8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.release.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.release.xcconfig"; sourceTree = "<group>"; };
+		FF6CDFED9D78ACBF04D40830 /* Pods-TrashMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashMapper.debug.xcconfig"; path = "Target Support Files/Pods-TrashMapper/Pods-TrashMapper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +74,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DC67DEB2E35DAFB2E5321E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF6CDFED9D78ACBF04D40830 /* Pods-TrashMapper.debug.xcconfig */,
+				8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8625D91C282EE8AA00E53C00 = {
 			isa = PBXGroup;
 			children = (
 				8625D927282EE8AA00E53C00 /* TrashMapper */,
 				8625D926282EE8AA00E53C00 /* Products */,
+				3DC67DEB2E35DAFB2E5321E0 /* Pods */,
+				90F2A4C02B216F72C79C4FDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +111,99 @@
 		8625D927282EE8AA00E53C00 /* TrashMapper */ = {
 			isa = PBXGroup;
 			children = (
-				8625D928282EE8AA00E53C00 /* AppDelegate.swift */,
+				8698469F28A06046006AF1DD /* Media */,
+				86EA4C55284E8E4400372ACB /* ReferenceDocs */,
+				86C0CE7128405517000D0B3C /* Controller */,
+				86C0CE7028405510000D0B3C /* View */,
+				86C0CE6F28405505000D0B3C /* Model */,
+				8684E9FB285CF51C00D695E2 /* Helpers */,
+				8684E9F9285CF47700D695E2 /* Utilities */,
 				8625D92A282EE8AA00E53C00 /* SceneDelegate.swift */,
-				8625D92C282EE8AA00E53C00 /* CurrentLocationViewController.swift */,
-				8625D92E282EE8AA00E53C00 /* Main.storyboard */,
+				8625D928282EE8AA00E53C00 /* AppDelegate.swift */,
 				8625D934282EE8AC00E53C00 /* Assets.xcassets */,
+				8625D92E282EE8AA00E53C00 /* Main.storyboard */,
 				8625D936282EE8AC00E53C00 /* LaunchScreen.storyboard */,
 				8625D939282EE8AC00E53C00 /* Info.plist */,
 				8625D931282EE8AA00E53C00 /* TrashMapper.xcdatamodeld */,
+				86740B0628404ACA00161DAA /* GoogleService-Info.plist */,
 			);
 			path = TrashMapper;
+			sourceTree = "<group>";
+		};
+		8684E9F9285CF47700D695E2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				86C2492828567E4B001CC414 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8684E9FB285CF51C00D695E2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8680A384284EE87000DC0434 /* UIImage+Resize.swift */,
+				865D26DE2849909200707C96 /* DashedBorderView.swift */,
+				8698469B28A03B09006AF1DD /* FormUtilities.swift */,
+				86CD5CA7285A44C1007BD8A9 /* Functions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8698469F28A06046006AF1DD /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				869846A528A0637B006AF1DD /* introvid.mp4 */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		86C0CE6F28405505000D0B3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86174BA828415EA3005774AC /* PostModel.swift */,
+				86C59DDD284B004F00A797A0 /* LocationDataManager.swift */,
+				8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */,
+				86F34708290331F500651C8C /* TaggedLocationView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86C0CE7028405510000D0B3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86C0CE7128405517000D0B3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				86174BA42841434F005774AC /* MapViewController.swift */,
+				86174BA628414F6A005774AC /* UserProfileViewController.swift */,
+				869737202842BF62009B99FB /* CreatePostViewController.swift */,
+				8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */,
+				8698469928A03A2D006AF1DD /* LoginViewController.swift */,
+				86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */,
+				86A866972909ED0400215D8A /* TabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		86EA4C55284E8E4400372ACB /* ReferenceDocs */ = {
+			isa = PBXGroup;
+			children = (
+				86EA4C54284E6A6300372ACB /* FireBase Considerations.md */,
+				8619B39628FDFC6C00F84DD9 /* map-points.json */,
+			);
+			path = ReferenceDocs;
+			sourceTree = "<group>";
+		};
+		90F2A4C02B216F72C79C4FDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8625D93C282EE8AC00E53C00 /* Build configuration list for PBXNativeTarget "TrashMapper" */;
 			buildPhases = (
+				1B993432A1742B58A18FD549 /* [CP] Check Pods Manifest.lock */,
 				8625D921282EE8AA00E53C00 /* Sources */,
 				8625D922282EE8AA00E53C00 /* Frameworks */,
 				8625D923282EE8AA00E53C00 /* Resources */,
+				E6783530DDCF9F45CF521135 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,7 +266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8619B39728FDFC6C00F84DD9 /* map-points.json in Resources */,
 				8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */,
+				86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */,
+				869846A628A0637B006AF1DD /* introvid.mp4 in Resources */,
 				8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */,
 				8625D930282EE8AA00E53C00 /* Main.storyboard in Resources */,
 			);
@@ -136,15 +277,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B993432A1742B58A18FD549 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrashMapper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6783530DDCF9F45CF521135 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrashMapper/Pods-TrashMapper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrashMapper/Pods-TrashMapper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrashMapper/Pods-TrashMapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8625D921282EE8AA00E53C00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8625D92D282EE8AA00E53C00 /* CurrentLocationViewController.swift in Sources */,
+				86174BA728414F6A005774AC /* UserProfileViewController.swift in Sources */,
 				8625D929282EE8AA00E53C00 /* AppDelegate.swift in Sources */,
 				8625D92B282EE8AA00E53C00 /* SceneDelegate.swift in Sources */,
+				8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */,
+				8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */,
+				86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */,
+				865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */,
+				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
+				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,
+				86A866982909ED0400215D8A /* TabBarController.swift in Sources */,
+				86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */,
+				8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */,
+				86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */,
+				8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */,
+				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
+				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
+				8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */,
+				86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +484,7 @@
 		};
 		8625D93D282EE8AC00E53C00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF6CDFED9D78ACBF04D40830 /* Pods-TrashMapper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,9 +493,13 @@
 				DEVELOPMENT_TEAM = VHMFV6J7GZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrashMapper/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use location to store user submitted posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gps location-services";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -309,12 +512,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		8625D93E282EE8AC00E53C00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8770C2CE5FB2E3123F1DF4DC /* Pods-TrashMapper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -323,9 +527,13 @@
 				DEVELOPMENT_TEAM = VHMFV6J7GZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TrashMapper/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use location to store user submitted posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gps location-services";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -338,7 +546,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
