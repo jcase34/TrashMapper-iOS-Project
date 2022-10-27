@@ -38,12 +38,19 @@ class MapViewController: UIViewController  {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         
-        //set the current view controller as the delegate for mapView
+        //get location & update map to show current user location upon screen load
         getLocation()
+        if let userLocation = locationManager.location?.coordinate {
+            print(userLocation)
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 200,longitudinalMeters: 200)
+            mapView.setRegion(viewRegion, animated: false)
+        }
+        
+        //set the current view controller as the delegate for mapView
         mapView.delegate = self
         
         
-        //register TaggedView
+        //register TaggedView for the MkAnnotation
         mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         //add sample map annotation
@@ -127,6 +134,7 @@ extension MapViewController : CLLocationManagerDelegate {
             //new location to be used, clear error
             locationError = nil
             location = newLocation
+            zoomUserLocation()
             
             //current location and new location accuracy the same, stop updating location
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
@@ -154,9 +162,7 @@ extension MapViewController : CLLocationManagerDelegate {
         getStatus()
     }
     
-    //need to clean up this function, breakout authorization with status, etc.
-    func getLocation() {
-        
+    func checkAuthStatus() {
         let authStatus = locationManager.authorizationStatus
         if authStatus == .notDetermined {
             print("Auth status not determined")
@@ -167,7 +173,11 @@ extension MapViewController : CLLocationManagerDelegate {
             showLocationServicesDeniedAlert()
             return
         }
-        
+    }
+    
+    //need to clean up this function, breakout authorization with status, etc.
+    func getLocation() {
+        checkAuthStatus()
         if updatingLocation {
             print(location!)
             stopLocationManager()
