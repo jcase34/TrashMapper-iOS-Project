@@ -71,6 +71,9 @@ class MapViewController: UIViewController  {
         present(ac, animated: true, completion: nil)
     }
     
+    @IBAction func addLocationButton(_ sender: UIBarButtonItem) {
+        print("add location button clicked")
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard location != nil else {return}
@@ -80,6 +83,15 @@ class MapViewController: UIViewController  {
             destinationVC.coordinate = location!.coordinate
             //possible error on not getting current location vs changing to other tab
       }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if location != nil {
+            print("passing valid coords")
+            return true
+        }
+        print("need valid coords before submitting post")
+        return false
     }
 }
 
@@ -145,6 +157,15 @@ extension MapViewController : CLLocationManagerDelegate {
         
         getStatus()
  
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let authStatus = manager.authorizationStatus
+        if authStatus == .authorizedWhenInUse {
+            getLocation()
+        } else {
+            return
+        }
     }
     
     func stopLocationManager() {

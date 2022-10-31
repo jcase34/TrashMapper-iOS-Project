@@ -46,7 +46,7 @@ class CreatePostViewController: UITableViewController {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
         print("At create post")
-        print(coordinate!)
+        print(coordinate ?? nil)
         FormUtlities.setupBackgroundColor(self.view)
         
         //create gesture recognizer for tap outside of UITextView
