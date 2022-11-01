@@ -9,23 +9,27 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
 
+    @IBOutlet weak var userProfileTitle: UILabel!
+    
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var deleteAccountButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("at userprofile controller")
-        FormUtlities.setupBackgroundColor(self.view)
+        setupElements()
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupElements() {
+        FormUtlities.setTextColor(userProfileTitle)
+        FormUtlities.styleFilledButton(logOutButton)
+        FormUtlities.styleHallowButton(deleteAccountButton)
+        FormUtlities.setupBackgroundColor(self.view)
+        
+        
     }
-    */
-
+    
 }

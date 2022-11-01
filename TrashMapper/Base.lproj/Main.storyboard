@@ -222,7 +222,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fvf-JE-eqa">
-                                <rect key="frame" x="40" y="669" width="310" height="101"/>
+                                <rect key="frame" x="40" y="670" width="310" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-LI-G36">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
@@ -236,7 +236,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-jh-uEe">
-                                        <rect key="frame" x="0.0" y="60" width="310" height="41"/>
+                                        <rect key="frame" x="0.0" y="60" width="310" height="40"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                         <connections>
@@ -245,7 +245,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3Id-jh-uEe" firstAttribute="height" secondItem="ULL-LI-G36" secondAttribute="height" multiplier="0.775" constant="10" id="TqA-Dy-NpF"/>
+                                    <constraint firstItem="3Id-jh-uEe" firstAttribute="height" secondItem="ULL-LI-G36" secondAttribute="height" id="TqA-Dy-NpF"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -410,52 +410,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-7b-HkC">
-                                <rect key="frame" x="94.999999999999986" y="421.99999999999994" width="183.66666666666666" height="62"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5i6-sM-kBa">
+                                <rect key="frame" x="40" y="243" width="310" height="100"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qry-3d-s73">
-                                        <rect key="frame" x="0.0" y="0.0" width="183.66666666666666" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfg-2e-Ws8">
-                                                <rect key="frame" x="0.0" y="0.0" width="66" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvo-Po-gss">
-                                                <rect key="frame" x="66" y="0.0" width="117.66666666666669" height="31"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-y8-OvQ">
-                                        <rect key="frame" x="0.0" y="31" width="183.66666666666666" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBT-9g-Nva">
-                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoi-Dd-e05">
-                                                <rect key="frame" x="116.66666666666669" y="0.0" width="67" height="31"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gw-Mp-t0a">
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="WPo-NT-bi2"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4B-nN-O7V">
+                                        <rect key="frame" x="0.0" y="60" width="310" height="40"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete Account"/>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="4Gw-Mp-t0a" firstAttribute="height" secondItem="B4B-nN-O7V" secondAttribute="height" id="xik-rp-JES"/>
+                                </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZ0-ZI-QBJ">
-                                <rect key="frame" x="75" y="193" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-Zc-G66">
+                                <rect key="frame" x="85" y="148" width="220" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="9Cu-mh-5di"/>
+                                    <constraint firstAttribute="width" constant="220" id="OlQ-JI-dcs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tC2-g0-qvl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tC2-g0-qvl" firstAttribute="trailing" secondItem="5i6-sM-kBa" secondAttribute="trailing" constant="40" id="C3L-Ad-7Ze"/>
+                            <constraint firstItem="5i6-sM-kBa" firstAttribute="top" secondItem="g7b-Zc-G66" secondAttribute="bottom" constant="50" id="EzH-k2-ruT"/>
+                            <constraint firstItem="g7b-Zc-G66" firstAttribute="top" secondItem="tC2-g0-qvl" secondAttribute="top" constant="60" id="PbQ-dk-73O"/>
+                            <constraint firstItem="g7b-Zc-G66" firstAttribute="centerX" secondItem="Efm-Bn-kzN" secondAttribute="centerX" id="cUQ-n4-pia"/>
+                            <constraint firstItem="5i6-sM-kBa" firstAttribute="leading" secondItem="tC2-g0-qvl" secondAttribute="leading" constant="40" id="ga4-HP-ONA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HBW-Y7-GVB"/>
+                    <connections>
+                        <outlet property="deleteAccountButton" destination="B4B-nN-O7V" id="kdZ-lB-kUH"/>
+                        <outlet property="logOutButton" destination="4Gw-Mp-t0a" id="ZrX-eM-A23"/>
+                        <outlet property="userProfileTitle" destination="g7b-Zc-G66" id="jAJ-ir-YP8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsE-r8-7X4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
