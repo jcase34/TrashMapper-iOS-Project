@@ -45,8 +45,6 @@ class CreatePostViewController: UITableViewController {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
-        print("At create post")
-        print(coordinate ?? nil)
         FormUtlities.setupBackgroundColor(self.view)
         
         //create gesture recognizer for tap outside of UITextView
@@ -114,6 +112,12 @@ class CreatePostViewController: UITableViewController {
 
  
  */
+//MARK: LocationManager Items
+extension CreatePostViewController: CLLocationManagerDelegate {
+    
+    
+}
+
 
 //MARK: - UIButton functions
 extension CreatePostViewController {
@@ -135,6 +139,7 @@ extension CreatePostViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard coordinate != nil else {return}
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         keyLocation = TaggedLocationAnnotation(coordinate: coordinate!, title: dateLabel.text!, subtitle: descriptionTextView.text!)
         print(keyLocation.coordinate)

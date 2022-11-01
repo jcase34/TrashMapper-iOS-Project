@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import Lottie
 
 class LoginViewController: UIViewController {
     
@@ -23,6 +24,22 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        setupLottie(withAnimation: "login-and-sign-up")
+    }
+    
+    func setupLottie(withAnimation animation: String) {
+        let signUpAnimationView = AnimationView()
+        let signUpAnimation = Animation.named(animation)
+        signUpAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(signUpAnimationView)
+        signUpAnimationView.animation = signUpAnimation
+        NSLayoutConstraint.activate([
+            signUpAnimationView.widthAnchor.constraint(equalToConstant: 350),
+            signUpAnimationView.heightAnchor.constraint(equalToConstant: 350),
+            signUpAnimationView.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -25),
+            signUpAnimationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
+        signUpAnimationView.play()
     }
     
     @IBAction func loginTap(_ sender: Any) {

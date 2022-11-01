@@ -17,7 +17,11 @@ class MapViewController: UIViewController  {
     @IBOutlet weak var zoomToUser: UIBarButtonItem!
     
     var locationManager = CLLocationManager()
-    var location: CLLocation?
+    var location: CLLocation? {
+        didSet {
+            print("location changed to \(location)")
+        }
+    }
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
@@ -39,16 +43,12 @@ class MapViewController: UIViewController  {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         
         //get location & update map to show current user location upon screen load
+
         getLocation()
-        if let userLocation = locationManager.location?.coordinate {
-            print(userLocation)
-            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 200,longitudinalMeters: 200)
-            mapView.setRegion(viewRegion, animated: false)
-        }
+        zoomUserLocation()
         
         //set the current view controller as the delegate for mapView
         mapView.delegate = self
-        
         
         //register TaggedView for the MkAnnotation
         mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
@@ -71,12 +71,16 @@ class MapViewController: UIViewController  {
         present(ac, animated: true, completion: nil)
     }
     
-    @IBAction func addLocationButton(_ sender: UIBarButtonItem) {
-        print("add location button clicked")
-    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard location != nil else {return}
+        
+        /*
+         Cannot use getLocation() function here.
+         locationManager.startUpdatingLocation() requires several seconds to notify the delegate, and actually get a return value on location. This is why there is no location update prior to changing segues...
+         This functionality is not needed at this time since I'm going to allow user to select location for waste.
+         */
+        
+        
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "addLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
@@ -91,6 +95,7 @@ class MapViewController: UIViewController  {
             return true
         }
         print("need valid coords before submitting post")
+        getLocation()
         return false
     }
 }
@@ -98,9 +103,15 @@ class MapViewController: UIViewController  {
 //MARK: - MapViewDelegate
 extension MapViewController : MKMapViewDelegate {
    
+    /*
+     Function to add - Make an annotation "draggable" by the user once done filling out the necessary fields in create post.
+     https://stackoverflow.com/questions/29776853/ios-swift-mapkit-making-an-annotation-draggable-by-the-user
+     
+     It looks like a mapview, AnnotationView, and state change function needs to be incorporated. 
+     
+     */
+    
 }
-
-
 
 //MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
@@ -146,7 +157,6 @@ extension MapViewController : CLLocationManagerDelegate {
             //new location to be used, clear error
             locationError = nil
             location = newLocation
-            zoomUserLocation()
             
             //current location and new location accuracy the same, stop updating location
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
@@ -159,6 +169,11 @@ extension MapViewController : CLLocationManagerDelegate {
  
     }
     
+/*
+ Error calling this function below. It is called when location manager object is declared.
+ Recalling getLocation in this instance causes location = nil which bricks program
+ See Ref- https://stackoverflow.com/questions/42869188/locationmanager-didchangeauthorization-executes-when-app-first-runs
+---------------------------------------------------------------------------------------------------------
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let authStatus = manager.authorizationStatus
         if authStatus == .authorizedWhenInUse {
@@ -167,6 +182,7 @@ extension MapViewController : CLLocationManagerDelegate {
             return
         }
     }
+*/
     
     func stopLocationManager() {
         if updatingLocation {
@@ -200,7 +216,7 @@ extension MapViewController : CLLocationManagerDelegate {
     func getLocation() {
         checkAuthStatus()
         if updatingLocation {
-            print(location!)
+            //print(location!)
             stopLocationManager()
         } else {
             getStatus()
@@ -224,10 +240,13 @@ extension MapViewController : CLLocationManagerDelegate {
     
     
     func zoomUserLocation() {
-        guard location != nil else {return}
-        let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(mapView.regionThatFits(region), animated: true)
-        print("Zooming to user location")
+        if let userLocation = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                mapView.setRegion(mapView.regionThatFits(region), animated: true)
+            print("Zooming to user location")
+        } else {
+            print("no valid location")
+        }
     }
 
     @objc func didTimeOut() {
