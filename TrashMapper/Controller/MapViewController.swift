@@ -73,14 +73,7 @@ class MapViewController: UIViewController  {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        /*
-         Cannot use getLocation() function here.
-         locationManager.startUpdatingLocation() requires several seconds to notify the delegate, and actually get a return value on location. This is why there is no location update prior to changing segues...
-         This functionality is not needed at this time since I'm going to allow user to select location for waste.
-         */
-        
-        
+        location = locationManager.location
         print("prepping for segue, identifier = \(String(describing: segue.identifier))")
         if segue.identifier == "addLocation" {
             let destinationVC = segue.destination as! CreatePostViewController
@@ -241,7 +234,7 @@ extension MapViewController : CLLocationManagerDelegate {
     
     func zoomUserLocation() {
         if let userLocation = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 500, longitudinalMeters: 500)
                 mapView.setRegion(mapView.regionThatFits(region), animated: true)
             print("Zooming to user location")
         } else {

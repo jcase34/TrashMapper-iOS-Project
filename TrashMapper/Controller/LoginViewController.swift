@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var personIcon: UIImageView!
+    @IBOutlet weak var keyIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +96,8 @@ class LoginViewController: UIViewController {
         FormUtlities.styleEmailPlaceHolderTextField(emailTextField)
         FormUtlities.stylePasswordPlaceHolderTextField(passwordTextField)
         FormUtlities.setupBackgroundColor(self.view)
+        personIcon.tintColor = FormUtlities.mainColor
+        keyIcon.tintColor = FormUtlities.mainColor
 
     }
 }

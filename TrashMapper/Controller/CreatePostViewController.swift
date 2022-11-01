@@ -39,6 +39,10 @@ class CreatePostViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+        /*
+         Refactor to include navigation items within repeatable class/function
+         */
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = K.createPostViewTitle
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)]

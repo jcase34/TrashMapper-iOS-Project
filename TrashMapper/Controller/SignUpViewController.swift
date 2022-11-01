@@ -21,6 +21,9 @@ class SignUpViewController : UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var personIcon: UIImageView!
+    @IBOutlet weak var keyIcon: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLottie(withAnimation: "login-and-sign-up")
@@ -106,6 +109,8 @@ class SignUpViewController : UIViewController {
         FormUtlities.styleEmailPlaceHolderTextField(emailTextField)
         FormUtlities.stylePasswordPlaceHolderTextField(passwordTextField)
         FormUtlities.setupBackgroundColor(self.view)
+        personIcon.tintColor = FormUtlities.mainColor
+        keyIcon.tintColor = FormUtlities.mainColor
         
     }
     
