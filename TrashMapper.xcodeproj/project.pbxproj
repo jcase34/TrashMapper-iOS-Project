@@ -31,6 +31,8 @@
 		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
 		86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* LocationDataManager.swift */; };
 		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
+		86CFC8A72911E99C00D3CFE9 /* PreWelcomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFC8A62911E99C00D3CFE9 /* PreWelcomeNavigationController.swift */; };
+		86CFC8A92913159A00D3CFE9 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */; };
 		86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */; };
 		86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F34708290331F500651C8C /* TaggedLocationView.swift */; };
 		993854646ED35D21F9E7B280 /* Pods_TrashMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FAC818A3458A09253EBAC5 /* Pods_TrashMapper.framework */; };
@@ -64,6 +66,8 @@
 		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C59DDD284B004F00A797A0 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
 		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		86CFC8A62911E99C00D3CFE9 /* PreWelcomeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreWelcomeNavigationController.swift; sourceTree = "<group>"; };
+		86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
 		86D0CD33286E04A2009DBD61 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		86EA4C54284E6A6300372ACB /* FireBase Considerations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "FireBase Considerations.md"; sourceTree = "<group>"; };
 		86F34708290331F500651C8C /* TaggedLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				865D26DE2849909200707C96 /* DashedBorderView.swift */,
 				8698469B28A03B09006AF1DD /* FormUtilities.swift */,
 				86CD5CA7285A44C1007BD8A9 /* Functions.swift */,
+				86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				86174BA42841434F005774AC /* MapViewController.swift */,
 				86174BA628414F6A005774AC /* UserProfileViewController.swift */,
+				86CFC8A62911E99C00D3CFE9 /* PreWelcomeNavigationController.swift */,
 				869737202842BF62009B99FB /* CreatePostViewController.swift */,
 				8698469D28A03BCA006AF1DD /* WelcomeViewController.swift */,
 				8698469928A03A2D006AF1DD /* LoginViewController.swift */,
@@ -334,6 +340,7 @@
 				8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */,
 				8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */,
 				86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */,
+				86CFC8A72911E99C00D3CFE9 /* PreWelcomeNavigationController.swift in Sources */,
 				865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */,
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
@@ -345,6 +352,7 @@
 				8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */,
 				86174BA928415EA3005774AC /* PostModel.swift in Sources */,
 				86C2492928567E4B001CC414 /* Constants.swift in Sources */,
+				86CFC8A92913159A00D3CFE9 /* DesignableUITextField.swift in Sources */,
 				8698469E28A03BCA006AF1DD /* WelcomeViewController.swift in Sources */,
 				86F34709290331F500651C8C /* TaggedLocationView.swift in Sources */,
 			);

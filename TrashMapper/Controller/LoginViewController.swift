@@ -13,21 +13,31 @@ import Lottie
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var errorLabel: UILabel!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var passwordTextField: DesignableUITextField!
     @IBOutlet weak var personIcon: UIImageView!
     @IBOutlet weak var keyIcon: UIImageView!
+    
+    var iconClick = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
         setupLottie(withAnimation: "login-and-sign-up")
+        self.navigationController?.navigationBar.tintColor = FormUtlities.mainColor
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(passwordIconTap(_:)))
+        passwordTextField.rightView?.isUserInteractionEnabled = true
+        passwordTextField.rightView?.addGestureRecognizer(tapGestureRecognizer)
+
     }
+    
+    @objc func passwordIconTap(_ tapGestureRecognizer: UITapGestureRecognizer) {
+        FormUtlities.toggleSecurePasswordAndIcon(passwordTextField, tapGestureRecognizer)
+    }
+    
+    
     
     func setupLottie(withAnimation animation: String) {
         let signUpAnimationView = AnimationView()
@@ -38,7 +48,7 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             signUpAnimationView.widthAnchor.constraint(equalToConstant: 350),
             signUpAnimationView.heightAnchor.constraint(equalToConstant: 350),
-            signUpAnimationView.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -25),
+            signUpAnimationView.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -40),
             signUpAnimationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
         signUpAnimationView.play()
@@ -60,7 +70,12 @@ class LoginViewController: UIViewController {
                 if err != nil {
                     showError(err!.localizedDescription)
                 } else {
-                    self.transitionToHome()
+                    
+                    /*
+                     Add loading button for sign out
+                     */
+                    
+                    self.transitionToMainApp()
                 }
             }
         }
@@ -81,10 +96,10 @@ class LoginViewController: UIViewController {
         return nil
     }
     
-    func transitionToHome() {
-        let mainViewController = storyboard?.instantiateViewController(withIdentifier: K.StoryBoard.mainViewController) as? UITabBarController
+    func transitionToMainApp() {
+        let mainAppVC = storyboard?.instantiateViewController(withIdentifier: K.StoryBoard.mainAppVC) as? UITabBarController
         
-        view.window?.rootViewController = mainViewController
+        view.window?.rootViewController = mainAppVC
         view.window?.makeKeyAndVisible()
     }
     

@@ -13,6 +13,7 @@ struct K {
     static let charLength = 100
     
     struct StoryBoard {
-        static let mainViewController = "mainVC"
+        static let mainAppVC = "mainVC"
+        static let welcomeVC = "welcomeVC"
     }
 }

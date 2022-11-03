@@ -65,5 +65,21 @@ class FormUtlities {
         view.backgroundColor = .systemBlue
     }
     
+    static func toggleSecurePasswordAndIcon(_ passwordTextField: DesignableUITextField, _ tapGestureRecognizer: UITapGestureRecognizer) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.rightImage = UIImage(systemName: "eye")
+            passwordTextField.isSecureTextEntry = false
+            passwordTextField.rightView?.isUserInteractionEnabled = true
+            passwordTextField.rightView?.addGestureRecognizer(tapGestureRecognizer)
+
+        } else {
+            passwordTextField.rightImage = UIImage(systemName: "eye.slash")
+            passwordTextField.isSecureTextEntry = true
+            passwordTextField.rightView?.isUserInteractionEnabled = true
+            passwordTextField.rightView?.addGestureRecognizer(tapGestureRecognizer)
+        }
+        
+    }
+    
     
 }

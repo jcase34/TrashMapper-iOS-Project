@@ -18,6 +18,8 @@ func assignUUID() {
 }
 
 func afterDelay() {
-    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+           //call any function
+    }
     
 }

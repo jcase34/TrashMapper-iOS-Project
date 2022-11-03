@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 import Lottie
 
 class WelcomeViewController: UIViewController {
@@ -31,7 +33,7 @@ class WelcomeViewController: UIViewController {
         
     }
     
-    
+
     func setupLottie() {
         self.view.backgroundColor = .systemBlue
         let mapAnimationView = AnimationView()
