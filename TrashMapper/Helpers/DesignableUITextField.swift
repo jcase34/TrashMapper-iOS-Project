@@ -13,7 +13,7 @@ class DesignableUITextField: UITextField {
     
     @IBInspectable var rightPadding: CGFloat = 0
     
-    @IBInspectable var color: UIColor = UIColor.lightGray {
+    @IBInspectable var color: UIColor = FormUtlities.mainColor {
         didSet {
             updateView()
         }

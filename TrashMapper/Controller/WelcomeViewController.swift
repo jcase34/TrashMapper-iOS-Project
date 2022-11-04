@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 import Lottie
 
 class WelcomeViewController: UIViewController {

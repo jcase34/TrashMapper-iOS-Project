@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/jacobcase/Documents/Projects/Workspace/TrashMapper/TrashMapper/Model/Location+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:TrashMapper.xcodeproj">
    </FileRef>
    <FileRef

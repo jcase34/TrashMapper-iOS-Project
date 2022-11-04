@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-import CoreData
+
 
 //Create outside viewController class to only instantiate a single formatter to be used everytime
 private let dateFormatter: DateFormatter = {
@@ -24,11 +24,30 @@ class CreatePostViewController: UITableViewController {
     
     //outlets for main screen
     @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    //date section
+    
+    @IBOutlet weak var dateCell: UITableViewCell!
+    @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    
+    //photos section
+    @IBOutlet weak var photoCell: UITableViewCell!
+    
+    //descriptionLabelCell
+    @IBOutlet weak var descriptionCell: UITableViewCell!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var numCharsLeft: UILabel!
     
+    //textFieldSection
     
+    @IBOutlet weak var descriptionTextCell: UITableViewCell!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    
+    
+
     //image variable for picker and delegates
     var image: UIImage?
     var keyLocation: TaggedLocationAnnotation!
@@ -50,6 +69,7 @@ class CreatePostViewController: UITableViewController {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
         FormUtlities.setupBackgroundColor(self.view)
+        tableView.backgroundColor = UIColor.systemBlue
         
         //create gesture recognizer for tap outside of UITextView
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -61,34 +81,38 @@ class CreatePostViewController: UITableViewController {
         dateLabel.text = format(date: Date())
         //UITextView Setup
         descriptionTextView.text = K.descriptionTextFieldText
-        descriptionTextView.textColor = UIColor.lightGray
-               
-        
+        descriptionTextView.textColor = FormUtlities.mainColor
+    
+
         //Delegate assignments
         descriptionTextView.delegate = self
         
         //max char length allowed for description text
         numCharsLeft.text = K.numCharsLeft
-
+        //date cell section
+        dateCell.backgroundColor = UIColor.systemBlue
+        dateTitleLabel.textColor = FormUtlities.mainColor
+        dateLabel.textColor = FormUtlities.mainColor
+        //photo cell section
+        photoCell.backgroundColor = UIColor.systemBlue
+        addPhotoButton.layer.cornerRadius = 50
         
-        //ISSUE - addPhotoButton.addDashedBorder() does not work, doesn't cover entire frame.
-        //addPhotoButton.addDashedBorder()
+        //description label cell section
+        descriptionCell.backgroundColor = UIColor.systemBlue
+        descriptionLabel.textColor = FormUtlities.mainColor
+        numCharsLeft.textColor = FormUtlities.mainColor
         
-        //ToDo
-        //App Looks better in white for demonstration
-        //Update later with custom Xibs, colors, etc.
+        //description text cell section
+        descriptionTextCell.backgroundColor = UIColor.systemBlue
+        descriptionTextView.layer.borderColor = CGColor.init(red: 255, green: 255, blue: 255, alpha: 1)
+        descriptionTextView.layer.borderWidth = 1
+        descriptionTextView.textColor = FormUtlities.mainColor
         
     }
     
+    
+    
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
-    
-    
     
     //MARK: - Helper Methods
     func format(date: Date) -> String {
@@ -116,11 +140,6 @@ class CreatePostViewController: UITableViewController {
 
  
  */
-//MARK: LocationManager Items
-extension CreatePostViewController: CLLocationManagerDelegate {
-    
-    
-}
 
 
 //MARK: - UIButton functions
@@ -163,6 +182,11 @@ extension CreatePostViewController {
         if indexPath.section == 0 && indexPath.row == 3 {
             descriptionTextView.becomeFirstResponder()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.tintColor = FormUtlities.mainColor
     }
 }
 
@@ -241,32 +265,32 @@ extension CreatePostViewController : UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Enter Description Here"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = FormUtlities.mainColor
         }
     }
     
     //once user starts typing, change text to black
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
+        if textView.textColor == FormUtlities.mainColor {
             textView.text = nil
-            textView.textColor = UIColor.black
         }
     }
     
     //show number of characters left for description field
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        //if no text in the view, return
-        guard let textField = textView.text else {return true}
-    
-        //grab the current text count, replacement count, and desired range as a length
-        let charLength = K.charLength - (textField.count + text.count - range.length)
+        /*
+         Reference Link - https://stackoverflow.com/questions/32935528/setting-maximum-number-of-characters-of-uitextview-and-uitextfield
+         */
         
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        //grab the current text count
+        let charLength = K.charLength - (numberOfChars)
         //update the cell detail label
         numCharsLeft.text = "Characters left: \(charLength)"
-        
-        //only allow text update if under 100 chars
-        return charLength <= 99
+        return numberOfChars < 100
+
     }
 }
 

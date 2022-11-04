@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="qau-9F-KAE" userLabel="MapViewController" customClass="MapViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Di0-V8-jPw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-5H-usz">
-                                <rect key="frame" x="0.0" y="88" width="390" height="624"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="741"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BLY-Pw-V5U"/>
@@ -58,14 +58,14 @@
             <objects>
                 <tableViewController id="CQA-6m-Vhq" userLabel="CreatePostViewController" customClass="CreatePostViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="S3Y-pD-yMv">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Add Details Below" id="Po9-i6-gbM" userLabel="AddPhoto">
+                            <tableViewSection id="Po9-i6-gbM" userLabel="AddPhoto">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="F0I-CF-GWJ" detailTextLabel="ttc-t8-v5d" style="IBUITableViewCellStyleValue1" id="Ozn-Ir-ekv">
-                                        <rect key="frame" x="0.0" y="49" width="390" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="F0I-CF-GWJ" detailTextLabel="ttc-t8-v5d" style="IBUITableViewCellStyleValue1" id="Ozn-Ir-ekv" userLabel="DateCell">
+                                        <rect key="frame" x="0.0" y="18" width="390" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ozn-Ir-ekv" id="eaw-Lb-9PX">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
@@ -88,23 +88,19 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Add Photo" rowHeight="300" id="VEp-E0-Cug" userLabel="Photo">
-                                        <rect key="frame" x="0.0" y="93" width="390" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Add Photo" rowHeight="300" id="VEp-E0-Cug" userLabel="PhotoCell">
+                                        <rect key="frame" x="0.0" y="62" width="390" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VEp-E0-Cug" id="bQC-kE-9xj">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7E-GV-u7o">
-                                                    <rect key="frame" x="66" y="25" width="257" height="250"/>
+                                                    <rect key="frame" x="70" y="31" width="250" height="238"/>
                                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                     </accessibility>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="FOg-Wc-8uN"/>
-                                                        <constraint firstAttribute="height" constant="250" id="hzI-We-Dyo"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" title="Add Photo" image="camera" catalog="system">
@@ -116,15 +112,16 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="s7E-GV-u7o" secondAttribute="bottom" constant="14" id="468-qH-xa5"/>
-                                                <constraint firstItem="s7E-GV-u7o" firstAttribute="top" secondItem="bQC-kE-9xj" secondAttribute="topMargin" constant="14" id="9Rr-mu-IWq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="s7E-GV-u7o" secondAttribute="trailing" constant="47" id="RSb-Up-tD1"/>
-                                                <constraint firstItem="s7E-GV-u7o" firstAttribute="leading" secondItem="bQC-kE-9xj" secondAttribute="leadingMargin" constant="46" id="fnr-fl-TVl"/>
+                                                <constraint firstItem="s7E-GV-u7o" firstAttribute="leading" secondItem="bQC-kE-9xj" secondAttribute="leadingMargin" constant="50" id="70I-am-ste"/>
+                                                <constraint firstItem="s7E-GV-u7o" firstAttribute="top" secondItem="bQC-kE-9xj" secondAttribute="topMargin" constant="20" id="8S8-dp-z6c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="s7E-GV-u7o" secondAttribute="trailing" constant="50" id="FwO-lN-9mO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="s7E-GV-u7o" secondAttribute="bottom" constant="20" id="QUo-ZD-xkD"/>
+                                                <constraint firstItem="s7E-GV-u7o" firstAttribute="centerX" secondItem="bQC-kE-9xj" secondAttribute="centerX" id="kIr-yS-wE6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ZOm-aC-oDw" detailTextLabel="DlI-kS-VJ6" style="IBUITableViewCellStyleValue1" id="xtb-JI-yeN" userLabel="Description">
-                                        <rect key="frame" x="0.0" y="393" width="390" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ZOm-aC-oDw" detailTextLabel="DlI-kS-VJ6" style="IBUITableViewCellStyleValue1" id="xtb-JI-yeN" userLabel="DescriptionLabelCell">
+                                        <rect key="frame" x="0.0" y="362" width="390" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xtb-JI-yeN" id="3UD-g5-nGz">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
@@ -147,8 +144,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="ji0-GE-FrI">
-                                        <rect key="frame" x="0.0" y="437" width="390" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="ji0-GE-FrI" userLabel="DescriptionTextCell">
+                                        <rect key="frame" x="0.0" y="406" width="390" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ji0-GE-FrI" id="opD-nX-C3g">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
@@ -192,9 +189,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPhotoButton" destination="s7E-GV-u7o" id="TcM-ZX-SA7"/>
-                        <outlet property="dateLabel" destination="ttc-t8-v5d" id="cp7-g2-sTz"/>
+                        <outlet property="dateCell" destination="Ozn-Ir-ekv" id="a2A-Hv-OHB"/>
+                        <outlet property="dateLabel" destination="ttc-t8-v5d" id="JKA-kI-ifp"/>
+                        <outlet property="dateTitleLabel" destination="F0I-CF-GWJ" id="Jv9-pO-mHq"/>
+                        <outlet property="descriptionCell" destination="xtb-JI-yeN" id="BWL-2U-oCx"/>
+                        <outlet property="descriptionLabel" destination="ZOm-aC-oDw" id="GSk-Xu-EUP"/>
+                        <outlet property="descriptionTextCell" destination="ji0-GE-FrI" id="Ii6-G5-GsB"/>
                         <outlet property="descriptionTextView" destination="Ugx-E5-2mG" id="XQl-VH-m1i"/>
                         <outlet property="numCharsLeft" destination="DlI-kS-VJ6" id="cZV-ao-SRA"/>
+                        <outlet property="photoCell" destination="VEp-E0-Cug" id="rp9-TV-Qg1"/>
                         <segue destination="7Nm-nY-7LN" kind="unwind" identifier="passDataToMap" unwindAction="passDataToMap:" id="YoS-33-wuP"/>
                     </connections>
                 </tableViewController>
@@ -212,9 +215,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrashMapper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilU-Tn-ekI">
-                                <rect key="frame" x="85" y="148" width="220" height="45"/>
+                                <rect key="frame" x="86.666666666666671" y="148" width="216.66666666666663" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="31e-8w-u5a"/>
                                     <constraint firstAttribute="height" constant="45" id="j6k-3t-1Cs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
@@ -306,7 +308,7 @@
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="icons8-login-64"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pass123!" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="go9-TJ-9sB" customClass="DesignableUITextField" customModule="TrashMapper" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="go9-TJ-9sB" customClass="DesignableUITextField" customModule="TrashMapper" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="39.999999999999943" width="282" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -444,10 +446,9 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-Zc-G66">
-                                <rect key="frame" x="85" y="148" width="220" height="45"/>
+                                <rect key="frame" x="105.66666666666669" y="148" width="179" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="9Cu-mh-5di"/>
-                                    <constraint firstAttribute="width" constant="220" id="OlQ-JI-dcs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
                                 <nil key="textColor"/>
@@ -611,15 +612,15 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="ett-Hz-Mua">
-            <size key="intrinsicContentSize" width="103" height="34"/>
-        </designable>
         <designable name="go9-TJ-9sB">
+            <size key="intrinsicContentSize" width="116.33333333333333" height="34"/>
+        </designable>
+        <designable name="lxl-C2-Jmo">
             <size key="intrinsicContentSize" width="116.33333333333333" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="CxR-Z0-bcI"/>
+        <segue reference="rdY-VK-KS3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>

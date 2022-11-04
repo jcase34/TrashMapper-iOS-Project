@@ -17,7 +17,6 @@
 		8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8625D931282EE8AA00E53C00 /* TrashMapper.xcdatamodeld */; };
 		8625D935282EE8AC00E53C00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8625D934282EE8AC00E53C00 /* Assets.xcassets */; };
 		8625D938282EE8AC00E53C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8625D936282EE8AC00E53C00 /* LaunchScreen.storyboard */; };
-		865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D26DE2849909200707C96 /* DashedBorderView.swift */; };
 		86740B0728404ACA00161DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86740B0628404ACA00161DAA /* GoogleService-Info.plist */; };
 		867D83312910A43F000C2393 /* login-and-sign-up.json in Resources */ = {isa = PBXBuildFile; fileRef = 867D83302910A43F000C2393 /* login-and-sign-up.json */; };
 		8680A383284EB09800DC0434 /* TaggedLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */; };
@@ -52,7 +51,6 @@
 		8625D934282EE8AC00E53C00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8625D937282EE8AC00E53C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8625D939282EE8AC00E53C00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		865D26DE2849909200707C96 /* DashedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedBorderView.swift; sourceTree = "<group>"; };
 		86740B0628404ACA00161DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		867D83302910A43F000C2393 /* login-and-sign-up.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "login-and-sign-up.json"; sourceTree = "<group>"; };
 		8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedLocationAnnotation.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				8680A384284EE87000DC0434 /* UIImage+Resize.swift */,
-				865D26DE2849909200707C96 /* DashedBorderView.swift */,
 				8698469B28A03B09006AF1DD /* FormUtilities.swift */,
 				86CD5CA7285A44C1007BD8A9 /* Functions.swift */,
 				86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */,
@@ -341,7 +338,6 @@
 				8680A385284EE87000DC0434 /* UIImage+Resize.swift in Sources */,
 				86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */,
 				86CFC8A72911E99C00D3CFE9 /* PreWelcomeNavigationController.swift in Sources */,
-				865D26DF2849909200707C96 /* DashedBorderView.swift in Sources */,
 				86174BA52841434F005774AC /* MapViewController.swift in Sources */,
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
 				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,

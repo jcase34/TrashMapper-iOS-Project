@@ -17,11 +17,7 @@ class MapViewController: UIViewController  {
     @IBOutlet weak var zoomToUser: UIBarButtonItem!
     
     var locationManager = CLLocationManager()
-    var location: CLLocation? {
-        didSet {
-            print("location changed to \(location)")
-        }
-    }
+    var location: CLLocation? 
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
