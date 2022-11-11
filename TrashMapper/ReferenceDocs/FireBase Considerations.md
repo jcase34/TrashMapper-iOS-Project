@@ -5,6 +5,13 @@ https://stackoverflow.com/questions/58469347/realtime-database-vs-firestore
 https://www.airpair.com/firebase/posts/structuring-your-firebase-data
 https://stackoverflow.com/questions/46765999/difference-between-real-time-database-and-firestore-in-firebase
 
+**updated Nov7 2022
+
+
+
+
+
+**Old
 FireStore vs RealTime Database
 
 Realtime Database:

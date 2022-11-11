@@ -9,7 +9,10 @@ import UIKit
 import CoreLocation
 import CoreLocationUI
 import MapKit
-import CoreData
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseCore
 
 class MapViewController: UIViewController  {
     
@@ -17,14 +20,19 @@ class MapViewController: UIViewController  {
     @IBOutlet weak var zoomToUser: UIBarButtonItem!
     
     var locationManager = CLLocationManager()
-    var location: CLLocation? 
+    var location: CLLocation? {
+        didSet{
+            zoomUserLocation()
+        }
+    }
     var timer: Timer?
     var locationError: Error?
     var updatingLocation: Bool = false
     
     var mapAnnotation : [MKAnnotation] = [] {
         didSet {
-            print("map annotations updated")
+            //print("map annotations updated \(mapAnnotation)")
+            mapView.addAnnotations(mapAnnotation)
         }
     }
     
@@ -46,16 +54,26 @@ class MapViewController: UIViewController  {
         //set the current view controller as the delegate for mapView
         mapView.delegate = self
         
+        
         //register TaggedView for the MkAnnotation
         mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
         //add sample map annotation
         print("annots added")
-        mapView.addAnnotations(mapAnnotation)
+        pullPostsFromFirebase()
+        
     }
         
     @IBAction func zoomToUser(_ sender: Any) {
         zoomUserLocation()
+  
+    }
+    
+    //MARK: - Firebase Operations
+    func pullPostsFromFirebase() {
+        print("get cloud data")
+        FirebaseDataManager.pullPostsFromCloud() { newAnnotations in
+            self.mapAnnotation = newAnnotations
+        }
     }
     
     //MARK: - Helper Methods
@@ -222,15 +240,22 @@ extension MapViewController : CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
-            
-            timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
+            timer = Timer.scheduledTimer(
+                timeInterval: 30,
+                target: self,
+                selector: #selector(didTimeOut),
+                userInfo: nil,
+                repeats: false)
         }
     }
     
     
     func zoomUserLocation() {
         if let userLocation = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 500, longitudinalMeters: 500)
+            let region = MKCoordinateRegion(
+                center: userLocation,
+                latitudinalMeters: 500,
+                longitudinalMeters: 500)
                 mapView.setRegion(mapView.regionThatFits(region), animated: true)
             print("Zooming to user location")
         } else {

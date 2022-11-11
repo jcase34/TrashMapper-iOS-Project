@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 struct PostModel {
@@ -13,8 +14,8 @@ struct PostModel {
     let date: String
     let locationDescription: String
     //let userID: String
-    let longitude: Double
-    let latitude: Double
+    let longitude: CLLocationDegrees
+    let latitude: CLLocationDegrees
 
     
     

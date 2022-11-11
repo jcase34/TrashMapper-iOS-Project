@@ -28,7 +28,7 @@
 		869846A628A0637B006AF1DD /* introvid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 869846A528A0637B006AF1DD /* introvid.mp4 */; };
 		86A866982909ED0400215D8A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A866972909ED0400215D8A /* TabBarController.swift */; };
 		86C2492928567E4B001CC414 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2492828567E4B001CC414 /* Constants.swift */; };
-		86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* LocationDataManager.swift */; };
+		86C59DDE284B004F00A797A0 /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C59DDD284B004F00A797A0 /* FirebaseDataManager.swift */; };
 		86CD5CA8285A44C1007BD8A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD5CA7285A44C1007BD8A9 /* Functions.swift */; };
 		86CFC8A72911E99C00D3CFE9 /* PreWelcomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFC8A62911E99C00D3CFE9 /* PreWelcomeNavigationController.swift */; };
 		86CFC8A92913159A00D3CFE9 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */; };
@@ -62,7 +62,7 @@
 		869846A528A0637B006AF1DD /* introvid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = introvid.mp4; sourceTree = "<group>"; };
 		86A866972909ED0400215D8A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86C2492828567E4B001CC414 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		86C59DDD284B004F00A797A0 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
+		86C59DDD284B004F00A797A0 /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		86CD5CA7285A44C1007BD8A9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		86CFC8A62911E99C00D3CFE9 /* PreWelcomeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreWelcomeNavigationController.swift; sourceTree = "<group>"; };
 		86CFC8A82913159A00D3CFE9 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				86174BA828415EA3005774AC /* PostModel.swift */,
-				86C59DDD284B004F00A797A0 /* LocationDataManager.swift */,
+				86C59DDD284B004F00A797A0 /* FirebaseDataManager.swift */,
 				8680A382284EB09800DC0434 /* TaggedLocationAnnotation.swift */,
 				86F34708290331F500651C8C /* TaggedLocationView.swift */,
 			);
@@ -342,7 +342,7 @@
 				8625D933282EE8AA00E53C00 /* TrashMapper.xcdatamodeld in Sources */,
 				869737212842BF62009B99FB /* CreatePostViewController.swift in Sources */,
 				86A866982909ED0400215D8A /* TabBarController.swift in Sources */,
-				86C59DDE284B004F00A797A0 /* LocationDataManager.swift in Sources */,
+				86C59DDE284B004F00A797A0 /* FirebaseDataManager.swift in Sources */,
 				8698469C28A03B09006AF1DD /* FormUtilities.swift in Sources */,
 				86D0CD34286E04A2009DBD61 /* SignUpViewController.swift in Sources */,
 				8698469A28A03A2D006AF1DD /* LoginViewController.swift in Sources */,

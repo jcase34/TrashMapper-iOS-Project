@@ -34,9 +34,6 @@ class UserProfileViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
-        
-
-        
         transitionToWelcomeVC()
         
     }
@@ -60,7 +57,6 @@ class UserProfileViewController: UIViewController {
     
     func transitionToWelcomeVC() {
         let welcomeVC = storyboard?.instantiateViewController(withIdentifier: K.StoryBoard.welcomeVC) as? UINavigationController
-        
         view.window?.rootViewController = welcomeVC
         view.window?.makeKeyAndVisible()
     }

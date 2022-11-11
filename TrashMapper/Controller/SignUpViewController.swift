@@ -58,12 +58,7 @@ class SignUpViewController : UIViewController {
         signUpAnimationView.play()
     }
     
-    
-    //checks fields for valid data. If correct, returns nil
-    func validateFields() -> String? {
-        
-        //chekc that all fields are filled in
-        
+    func validateFields() -> String? {        
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
@@ -98,6 +93,7 @@ class SignUpViewController : UIViewController {
                     /*
                      Add loading button for sign out
                      */
+                    FirebaseDataManager.createInitialEmptyUserDocument()
                     self.transitionToMainApp()
                     
                 }

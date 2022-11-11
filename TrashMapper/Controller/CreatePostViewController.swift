@@ -8,6 +8,10 @@
 import UIKit
 import CoreLocation
 import MapKit
+import FirebaseStorage
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 
 //Create outside viewController class to only instantiate a single formatter to be used everytime
@@ -18,15 +22,12 @@ private let dateFormatter: DateFormatter = {
 }()
 
 class CreatePostViewController: UITableViewController {
-    
-    //coreData vars
-//    var managedObjectContext: NSManagedObjectContext!
+
     
     //outlets for main screen
     @IBOutlet weak var addPhotoButton: UIButton!
     
     //date section
-    
     @IBOutlet weak var dateCell: UITableViewCell!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -41,18 +42,13 @@ class CreatePostViewController: UITableViewController {
     @IBOutlet weak var numCharsLeft: UILabel!
     
     //textFieldSection
-    
     @IBOutlet weak var descriptionTextCell: UITableViewCell!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    
-    
-
     //image variable for picker and delegates
     var image: UIImage?
     var keyLocation: TaggedLocationAnnotation!
     var coordinate: CLLocationCoordinate2D?
-    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,10 +106,6 @@ class CreatePostViewController: UITableViewController {
         
     }
     
-    
-    
-
-    
     //MARK: - Helper Methods
     func format(date: Date) -> String {
         return dateFormatter.string(from: date)
@@ -144,34 +136,25 @@ class CreatePostViewController: UITableViewController {
 
 //MARK: - UIButton functions
 extension CreatePostViewController {
-    @IBAction func addPhotoButton(_ sender: Any) {
-        print("add photo tapped")
-        pickPhoto()
-    }
+//    @IBAction func addPhotoButton(_ sender: Any) {
+//        print("add photo tapped")
+//        pickPhoto()
+//    }
     
     @IBAction func cancel(_ sender: Any) {
         print("cancel tapped")
         navigationController?.popViewController(animated: true)
-        //move back to previous view controller
-        //ping location?
-        //remove picture, and other potential post information
     }
     
     @IBAction func submit(_ sender: Any) {
         
+        let docRef = FirebaseDataManager.generateNewPostReferenceID()
+        FirebaseDataManager.createNewPostInCloud(dateLabel.text!, descriptionTextView.text, coordinate!, docRef)
+        FirebaseDataManager.updateUserDocumentPostsEntries(docRef)
+        navigationController?.popViewController(animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard coordinate != nil else {return}
-        print("prepping for segue, identifier = \(String(describing: segue.identifier))")
-        keyLocation = TaggedLocationAnnotation(coordinate: coordinate!, title: dateLabel.text!, subtitle: descriptionTextView.text!)
-        print(keyLocation.coordinate)
-        if segue.identifier == "PassDataToMap" {
-            let destinationVC = segue.destination as! MapViewController
-            destinationVC.mapAnnotation.append(keyLocation)
-            //possible error on not getting current location vs changing to other tab
-      }
-    }
+    
 }
 
 

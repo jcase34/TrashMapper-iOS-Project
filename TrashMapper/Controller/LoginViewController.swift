@@ -74,7 +74,6 @@ class LoginViewController: UIViewController {
                     /*
                      Add loading button for sign out
                      */
-                    
                     self.transitionToMainApp()
                 }
             }

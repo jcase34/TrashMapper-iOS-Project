@@ -21,29 +21,23 @@ class WelcomeViewController: UIViewController {
         setupElements()
         setupLottie()
         welcomeTitle.center.x -= view.bounds.width
-        
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
     }
     
 
     func setupLottie() {
         self.view.backgroundColor = .systemBlue
         let mapAnimationView = AnimationView()
-        /// Some time later
         let mapAnimation = Animation.named("map-points")
         mapAnimationView.animation = mapAnimation
         mapAnimationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         mapAnimationView.center = self.view.center
         mapAnimationView.contentMode = .scaleAspectFill
-        
         self.view.addSubview(mapAnimationView)
-        
         mapAnimationView.play()
     }
     

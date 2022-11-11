@@ -16,4 +16,7 @@ struct K {
         static let mainAppVC = "mainVC"
         static let welcomeVC = "welcomeVC"
     }
+    
+    static let users = "users"
+    static let posts = "posts"
 }
