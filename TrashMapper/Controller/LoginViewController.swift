@@ -30,6 +30,11 @@ class LoginViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(passwordIconTap(_:)))
         passwordTextField.rightView?.isUserInteractionEnabled = true
         passwordTextField.rightView?.addGestureRecognizer(tapGestureRecognizer)
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     
@@ -37,7 +42,19 @@ class LoginViewController: UIViewController {
         FormUtlities.toggleSecurePasswordAndIcon(passwordTextField, tapGestureRecognizer)
     }
     
-    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
     func setupLottie(withAnimation animation: String) {
         let signUpAnimationView = AnimationView()
@@ -102,6 +119,11 @@ class LoginViewController: UIViewController {
         view.window?.makeKeyAndVisible()
     }
     
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//            self.view.endEditing(true)
+//            return false
+//        }
+//
     
     func setUpElements() {
         //hide error label
@@ -113,5 +135,17 @@ class LoginViewController: UIViewController {
         personIcon.tintColor = FormUtlities.mainColor
         keyIcon.tintColor = FormUtlities.mainColor
 
+    }
+}
+
+extension LoginViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

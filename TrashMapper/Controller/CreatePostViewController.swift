@@ -64,8 +64,10 @@ class CreatePostViewController: UITableViewController {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
 
+
         FormUtlities.setupBackgroundColor(self.view)
         tableView.backgroundColor = UIColor.systemBlue
+        
         
         //create gesture recognizer for tap outside of UITextView
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -91,7 +93,7 @@ class CreatePostViewController: UITableViewController {
         dateLabel.textColor = FormUtlities.mainColor
         //photo cell section
         photoCell.backgroundColor = UIColor.systemBlue
-        addPhotoButton.layer.cornerRadius = 50
+        photoCell.textLabel?.textColor = FormUtlities.mainColor
         
         //description label cell section
         descriptionCell.backgroundColor = UIColor.systemBlue
@@ -100,8 +102,6 @@ class CreatePostViewController: UITableViewController {
         
         //description text cell section
         descriptionTextCell.backgroundColor = UIColor.systemBlue
-        descriptionTextView.layer.borderColor = CGColor.init(red: 255, green: 255, blue: 255, alpha: 1)
-        descriptionTextView.layer.borderWidth = 1
         descriptionTextView.textColor = FormUtlities.mainColor
         
     }
@@ -136,10 +136,10 @@ class CreatePostViewController: UITableViewController {
 
 //MARK: - UIButton functions
 extension CreatePostViewController {
-//    @IBAction func addPhotoButton(_ sender: Any) {
-//        print("add photo tapped")
-//        pickPhoto()
-//    }
+    @IBAction func addPhotoButton(_ sender: Any) {
+        print("add photo tapped")
+        pickPhoto()
+    }
     
     @IBAction func cancel(_ sender: Any) {
         print("cancel tapped")

@@ -26,8 +26,8 @@ class SignUpViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLottie(withAnimation: "login-and-sign-up")
         setUpElements()
+        setupLottie(withAnimation: "login-and-sign-up")
         self.navigationController?.navigationBar.tintColor = FormUtlities.mainColor
         
         
@@ -35,13 +35,30 @@ class SignUpViewController : UIViewController {
         passwordTextField.rightView?.isUserInteractionEnabled = true
         passwordTextField.rightView?.addGestureRecognizer(tapGestureRecognizer)
         
+        self.hideKeyboardWhenTappedAround()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func passwordIconTap(_ tapGestureRecognizer: UITapGestureRecognizer) {
         FormUtlities.toggleSecurePasswordAndIcon(passwordTextField, tapGestureRecognizer)
     }
     
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
     func setupLottie(withAnimation animation: String) {
         let signUpAnimationView = AnimationView()
@@ -125,9 +142,17 @@ class SignUpViewController : UIViewController {
         keyIcon.tintColor = FormUtlities.mainColor
         
     }
-    
-    
-    
-    
-    
 }
+
+extension SignUpViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+

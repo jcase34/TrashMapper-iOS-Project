@@ -62,6 +62,10 @@ class MapViewController: UIViewController  {
         pullPostsFromFirebase()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        pullPostsFromFirebase()
+    }
         
     @IBAction func zoomToUser(_ sender: Any) {
         zoomUserLocation()
@@ -71,9 +75,10 @@ class MapViewController: UIViewController  {
     //MARK: - Firebase Operations
     func pullPostsFromFirebase() {
         print("get cloud data")
-        FirebaseDataManager.pullPostsFromCloud() { newAnnotations in
+        FirebaseDataManager.pullPostsFromCloud { newAnnotations in
             self.mapAnnotation = newAnnotations
         }
+        
     }
     
     //MARK: - Helper Methods
@@ -117,6 +122,27 @@ extension MapViewController : MKMapViewDelegate {
      It looks like a mapview, AnnotationView, and state change function needs to be incorporated. 
      
      */
+    
+    /// Called whent he user taps the disclosure button in the bridge callout.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        // This illustrates how to detect which annotation type was tapped on for its callout.
+        if let annotation = view.annotation as? TaggedLocationAnnotation, annotation.isKind(of: TaggedLocationAnnotation.self) {
+            print("Tapped Golden Gate Bridge annotation accessory view")
+            
+            if let detailNavController = storyboard?.instantiateViewController(withIdentifier: "DetailNavController") {
+                detailNavController.modalPresentationStyle = .popover
+                let presentationController = detailNavController.popoverPresentationController
+                presentationController?.permittedArrowDirections = .any
+                
+                // Anchor the popover to the button that triggered the popover.
+                presentationController?.sourceRect = control.frame
+                presentationController?.sourceView = control
+                
+                present(detailNavController, animated: true, completion: nil)
+            }
+        }
+    }
     
 }
 
@@ -248,7 +274,6 @@ extension MapViewController : CLLocationManagerDelegate {
                 repeats: false)
         }
     }
-    
     
     func zoomUserLocation() {
         if let userLocation = locationManager.location?.coordinate {

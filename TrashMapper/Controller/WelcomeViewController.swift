@@ -19,8 +19,10 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
-        setupLottie()
+        setupLottie(withAnimation: "map-points")
         welcomeTitle.center.x -= view.bounds.width
+        welcomeTitle.shadowColor = .black
+        welcomeTitle.shadowOffset = CGSize(width: 3, height: 3)
 
     }
     
@@ -28,20 +30,34 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-
-    func setupLottie() {
-        self.view.backgroundColor = .systemBlue
+    func setupLottie(withAnimation animation: String) {
         let mapAnimationView = AnimationView()
-        let mapAnimation = Animation.named("map-points")
-        mapAnimationView.animation = mapAnimation
-        mapAnimationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-        mapAnimationView.center = self.view.center
-        mapAnimationView.contentMode = .scaleAspectFill
+        let mapAnimation = Animation.named(animation)
+        mapAnimationView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapAnimationView)
+        mapAnimationView.animation = mapAnimation
+        NSLayoutConstraint.activate([
+            mapAnimationView.widthAnchor.constraint(equalToConstant: 350),
+            mapAnimationView.heightAnchor.constraint(equalToConstant: 350),
+            mapAnimationView.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -10),
+            mapAnimationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
         mapAnimationView.play()
     }
+
+//    func setupLottie() {
+//        let mapAnimationView = AnimationView()
+//        let mapAnimation = Animation.named("map-points")
+//        mapAnimationView.animation = mapAnimation
+//        mapAnimationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+//        mapAnimationView.center = self.view.center
+//        mapAnimationView.contentMode = .scaleAspectFill
+//        self.view.addSubview(mapAnimationView)
+//        mapAnimationView.play()
+//    }
     
     func setupElements() {
+        self.view.backgroundColor = .systemBlue
         FormUtlities.setTextColor(welcomeTitle)
         FormUtlities.styleFilledButton(signUpButton)
         FormUtlities.styleHallowButton(loginButton)

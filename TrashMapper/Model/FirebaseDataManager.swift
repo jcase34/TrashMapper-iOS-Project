@@ -15,13 +15,13 @@ import CoreLocation
 
 class FirebaseDataManager {
     
-
+    var newPostsToReturn: [TaggedLocationAnnotation] = []
     
     static func createInitialEmptyUserDocument() {
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection(K.users).document(user!.email!).setData([
-            "loginCount" : 0,
+            "loginCount" : 1,
             "postCount" : 0,
             "posts" : []
         ]) { error in
@@ -103,10 +103,14 @@ class FirebaseDataManager {
     }
     
     static func pullPostsFromCloud(_ newPostsHandler: @escaping ([TaggedLocationAnnotation]) -> Void) {
+        /*
+         Relavent Post - https://stackoverflow.com/questions/38364288/getting-data-out-of-a-closure-that-retrieves-data-from-firebase/38364861#38364861
+         
+         */
+        
         let db = Firestore.firestore()
         var posts = [TaggedLocationAnnotation]()
         let docRef = db.collection("posts")
-        
         //asynch operation
         docRef.getDocuments { (QuerySnapshot, error) in
             if let error = error {
