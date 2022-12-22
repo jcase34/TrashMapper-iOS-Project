@@ -21,3 +21,20 @@ There will also be a tableView which will contain a list of the posts, similar t
 
 The app will use Firebase as it's backend service. CRUD operations will need to be supported as the data points will contiuously change within the application.
 
+# Demo
+
+## User Sign Up/Login
+
+## Navigating around
+
+## Creating a Post
+
+## Selecting a Post
+
+## Updating a Post
+
+## Deleting a Post
+
+## User Tab/Details
+
+
