@@ -10,12 +10,13 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseFirestoreSwift
 import CoreLocation
+import UIKit
+import SDWebImage
 
 
 class FirebaseDataManager {
-    
-    var newPostsToReturn: [TaggedLocationAnnotation] = []
     
     static func createInitialEmptyUserDocument() {
         let db = Firestore.firestore()
@@ -44,6 +45,7 @@ class FirebaseDataManager {
             } else {
                 print("successfully update user doc data")
             }
+
         }
     }
     
@@ -78,13 +80,12 @@ class FirebaseDataManager {
         }
     }
     
-    
     static func generateNewPostReferenceID() -> DocumentReference {
         let db = Firestore.firestore()
         return db.collection(K.posts).document()
     }
     
-    static func createNewPostInCloud(_ dateToAdd: String, _ descriptionText: String, _ location: CLLocationCoordinate2D, _ newDocumentRef: DocumentReference) {
+    static func createNewPostInCloud(_ dateToAdd: String, _ descriptionText: String, _ location: CLLocationCoordinate2D, imagePath: String, _ newDocumentRef: DocumentReference) {
         let user = Auth.auth().currentUser
         newDocumentRef.setData([
             "date" : dateToAdd,
@@ -92,7 +93,7 @@ class FirebaseDataManager {
             "longitude" : location.longitude,
             "description" : descriptionText,
             "author" : user!.email!,
-            "image" : "some image reference point"
+            "imageUrl" : imagePath
             ]) { error in
                 if let error = error {
                     print("error occurred writing new post \(error)")
@@ -102,33 +103,66 @@ class FirebaseDataManager {
         }
     }
     
-    static func pullPostsFromCloud(_ newPostsHandler: @escaping ([TaggedLocationAnnotation]) -> Void) {
-        /*
-         Relavent Post - https://stackoverflow.com/questions/38364288/getting-data-out-of-a-closure-that-retrieves-data-from-firebase/38364861#38364861
-         
-         */
-        
+    static func pullPostsFromCloud(_ newPostsHandler: @escaping ([Post]) -> Void) {
+
         let db = Firestore.firestore()
-        var posts = [TaggedLocationAnnotation]()
-        let docRef = db.collection("posts")
+        var posts = [Post]()
+        let docRef = db.collection(K.posts)
+        //var filePaths: [String] = []
+        
         //asynch operation
-        docRef.getDocuments { (QuerySnapshot, error) in
-            if let error = error {
-                print("error retrieving data from cloud \(error)")
+        docRef.getDocuments() { QuerySnapshot, Error in
+            if let err = Error {
+                print("Error fetching data from FB \(err.localizedDescription)")
             } else {
-                print("pulling data from cloud")
                 for document in QuerySnapshot!.documents {
-                    let newPost = TaggedLocationAnnotation(
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: document.data()["latitude"] as! CLLocationDegrees,
-                            longitude: document.data()["longitude"] as! CLLocationDegrees),
-                        title: document.data()["date"] as! String,
-                        subtitle: document.data()["description"] as! String
-                        )
-                    posts.append(newPost)
+                    do {
+                        let newPost = try document.data(as: Post.self)
+                        posts.append(newPost)
+                    } catch {
+                        print("error")
+                    }
                 }
             }
             newPostsHandler(posts)
         }
+        
     }
+    
+    static func uploadPhoto(image: UIImage, imagePath: String) {
+        //create storage reference from storage framework
+        let storageRef = Storage.storage().reference()
+        
+        //store image data as compressed jpeg
+        let imageData = image.jpegData(compressionQuality: 0.8)
+        
+        //verify that image isn't nil
+        guard imageData != nil else {return}
+        
+        //specify filepath, unique ID assignment to the image being uploaded
+        let fileRef =  storageRef.child(imagePath)
+        
+        //upload the data w/ closure
+        let uploadTask = fileRef.putData(imageData!, metadata: nil) { metadata, error in
+            
+            //check for errors
+            if error == nil && metadata != nil {
+                //save ref to firestore database
+                
+            } else {
+                print("Error saving picture to storage \(String(describing: error))")
+                print("Metadata \(String(describing: metadata))")
+            }
+        }
+        
+        //save reference to database linking user email
+    }
+    
+//    static func retrievePhotos(imageURLs: [String]) {
+//        for imageURL in imageURLs {
+//            let imageView = UIImageView()
+//            imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: <#T##String#>))
+//        }
+//    }
+    
 }

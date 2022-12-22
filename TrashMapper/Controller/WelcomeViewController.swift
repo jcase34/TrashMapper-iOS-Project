@@ -39,22 +39,11 @@ class WelcomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             mapAnimationView.widthAnchor.constraint(equalToConstant: 350),
             mapAnimationView.heightAnchor.constraint(equalToConstant: 350),
-            mapAnimationView.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -10),
+            mapAnimationView.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -20),
             mapAnimationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
         mapAnimationView.play()
     }
-
-//    func setupLottie() {
-//        let mapAnimationView = AnimationView()
-//        let mapAnimation = Animation.named("map-points")
-//        mapAnimationView.animation = mapAnimation
-//        mapAnimationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-//        mapAnimationView.center = self.view.center
-//        mapAnimationView.contentMode = .scaleAspectFill
-//        self.view.addSubview(mapAnimationView)
-//        mapAnimationView.play()
-//    }
     
     func setupElements() {
         self.view.backgroundColor = .systemBlue

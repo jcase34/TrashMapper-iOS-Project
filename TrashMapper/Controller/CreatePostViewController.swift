@@ -52,57 +52,21 @@ class CreatePostViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        
-        /*
-         Refactor to include navigation items within repeatable class/function
-         */
+
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = K.createPostViewTitle
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)]
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
-
-
-        FormUtlities.setupBackgroundColor(self.view)
-        tableView.backgroundColor = UIColor.systemBlue
-        
-        
-        //create gesture recognizer for tap outside of UITextView
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        gestureRecognizer.cancelsTouchesInView = false
-        tableView.addGestureRecognizer(gestureRecognizer)
+      
+        setupGestureRecognizer()
+        setupViewStyles()
         
         //Load information for a bogus/test location
-        
         dateLabel.text = format(date: Date())
-        //UITextView Setup
-        descriptionTextView.text = K.descriptionTextFieldText
-        descriptionTextView.textColor = FormUtlities.mainColor
-    
 
         //Delegate assignments
         descriptionTextView.delegate = self
-        
-        //max char length allowed for description text
-        numCharsLeft.text = K.numCharsLeft
-        //date cell section
-        dateCell.backgroundColor = UIColor.systemBlue
-        dateTitleLabel.textColor = FormUtlities.mainColor
-        dateLabel.textColor = FormUtlities.mainColor
-        //photo cell section
-        photoCell.backgroundColor = UIColor.systemBlue
-        photoCell.textLabel?.textColor = FormUtlities.mainColor
-        
-        //description label cell section
-        descriptionCell.backgroundColor = UIColor.systemBlue
-        descriptionLabel.textColor = FormUtlities.mainColor
-        numCharsLeft.textColor = FormUtlities.mainColor
-        
-        //description text cell section
-        descriptionTextCell.backgroundColor = UIColor.systemBlue
-        descriptionTextView.textColor = FormUtlities.mainColor
         
     }
     
@@ -125,7 +89,50 @@ class CreatePostViewController: UITableViewController {
             }
         }
     }
+    
+    func setupGestureRecognizer() {
+        //create gesture recognizer for tap outside of UITextView
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(gestureRecognizer)
+    }
 }
+
+
+//MARK: Form styles
+extension CreatePostViewController {
+    func setupViewStyles() {
+        //setup background color of main view
+        FormUtlities.setupBackgroundColor(self.view)
+        //setup tableview color
+        tableView.backgroundColor = UIColor.systemBlue
+        
+        //UITextView Setup
+        descriptionTextView.text = K.descriptionTextFieldText
+        descriptionTextView.textColor = FormUtlities.mainColor
+        
+        //max char length allowed for description text
+        numCharsLeft.text = K.numCharsLeft
+        //date cell section
+        dateCell.backgroundColor = UIColor.systemBlue
+        dateTitleLabel.textColor = FormUtlities.mainColor
+        dateLabel.textColor = FormUtlities.mainColor
+        //photo cell section
+        photoCell.backgroundColor = UIColor.systemBlue
+        photoCell.textLabel?.textColor = FormUtlities.mainColor
+        
+        //description label cell section
+        descriptionCell.backgroundColor = UIColor.systemBlue
+        descriptionLabel.textColor = FormUtlities.mainColor
+        numCharsLeft.textColor = FormUtlities.mainColor
+        
+        //description text cell section
+        descriptionTextCell.backgroundColor = UIColor.systemBlue
+        descriptionTextView.textColor = FormUtlities.mainColor
+    }
+    
+}
+
 
 //MARK: - Data Manager Tasks (Firebase)
 /*
@@ -134,7 +141,7 @@ class CreatePostViewController: UITableViewController {
  */
 
 
-//MARK: - UIButton functions
+//MARK: - Navigation Buttons functions
 extension CreatePostViewController {
     @IBAction func addPhotoButton(_ sender: Any) {
         print("add photo tapped")
@@ -147,14 +154,19 @@ extension CreatePostViewController {
     }
     
     @IBAction func submit(_ sender: Any) {
-        
-        let docRef = FirebaseDataManager.generateNewPostReferenceID()
-        FirebaseDataManager.createNewPostInCloud(dateLabel.text!, descriptionTextView.text, coordinate!, docRef)
-        FirebaseDataManager.updateUserDocumentPostsEntries(docRef)
-        navigationController?.popViewController(animated: true)
+        if let image = image {
+            //prompt to select an image
+            let path = "images/\(UUID().uuidString).jpg"
+            let docRef = FirebaseDataManager.generateNewPostReferenceID()
+            FirebaseDataManager.createNewPostInCloud(dateLabel.text!, descriptionTextView.text, coordinate!, imagePath: path, docRef)
+            FirebaseDataManager.updateUserDocumentPostsEntries(docRef)
+            FirebaseDataManager.uploadPhoto(image: image, imagePath: path)
+            
+            navigationController?.popViewController(animated: true)
+        } else {
+            return
+        }
     }
-    
-    
 }
 
 
@@ -181,21 +193,16 @@ extension CreatePostViewController : UIImagePickerControllerDelegate, UINavigati
         //After photo picked, grap photo from infokeys
         image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         
-        if let theImage = image {
+        if let theSelectedImage = image {
             //display photo within button "addPhoto"
-            displayImageOnButton(theImage)
-            
-            
-            /*
-             To Dos:
-             function to grab directory of app
-             assign unique UUID to photo (better strategy?)
-             store a compressed image within file via URL (as big as AddPhoto button for consistancy)
-             store location of that image, wiping if we cancel out or select different image
-             */
+            displayImageOnButton(theSelectedImage)
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
     
     func takePhotoWithCamera() {

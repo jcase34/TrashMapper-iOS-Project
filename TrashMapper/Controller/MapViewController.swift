@@ -17,12 +17,16 @@ import FirebaseCore
 class MapViewController: UIViewController  {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var PullButton: UIButton!
     @IBOutlet weak var zoomToUser: UIBarButtonItem!
     
+    var locationManagerSet: Bool = false
     var locationManager = CLLocationManager()
+    var authStatus : CLAuthorizationStatus = .notDetermined
     var location: CLLocation? {
         didSet{
-            zoomUserLocation()
+            print(location)
+            //zoomUserLocation()
         }
     }
     var timer: Timer?
@@ -38,37 +42,33 @@ class MapViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         print("At mapviewcontroller")
+        locationManager.delegate = self
+        mapView.delegate = self
+
         FormUtlities.setupBackgroundColor(self.view)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)]
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.init(red: 200/255, green: 220/255, blue: 200/255, alpha: 1)
-        
-        //get location & update map to show current user location upon screen load
-
+        //mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         getLocation()
         zoomUserLocation()
-        
-        //set the current view controller as the delegate for mapView
-        mapView.delegate = self
-        
-        
-        //register TaggedView for the MkAnnotation
-        mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        //add sample map annotation
-        print("annots added")
-        pullPostsFromFirebase()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("@ view will appear")
         pullPostsFromFirebase()
     }
         
     @IBAction func zoomToUser(_ sender: Any) {
-        zoomUserLocation()
+        if locationManager.location != nil {
+            print("do zoom")
+            zoomUserLocation()
+        } else {
+            showNoValidLocation()
+            print("no zoomz allowed")
+        }
   
     }
     
@@ -76,18 +76,20 @@ class MapViewController: UIViewController  {
     func pullPostsFromFirebase() {
         print("get cloud data")
         FirebaseDataManager.pullPostsFromCloud { newAnnotations in
-            self.mapAnnotation = newAnnotations
+            for annotation in newAnnotations {
+                print(annotation.description)
+                let newTag = TaggedLocationAnnotation(
+                    coordinate: CLLocationCoordinate2D(latitude: annotation.latitude, longitude: annotation.longitude),
+                    title: annotation.date,
+                    subtitle: annotation.description)
+                self.mapAnnotation.append(newTag)
+            }
         }
         
     }
     
-    //MARK: - Helper Methods
-    func showLocationServicesDeniedAlert() {
-        let ac = UIAlertController(title: "Location Services Disable", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        ac.addAction(okAction)
-        
-        present(ac, animated: true, completion: nil)
+    @IBAction func PullButton(_ sender: Any) {
+        pullPostsFromFirebase()
     }
     
     // MARK: - Navigation
@@ -102,33 +104,47 @@ class MapViewController: UIViewController  {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if location != nil {
-            print("passing valid coords")
-            return true
+        guard let currentLocation = locationManager.location else {
+            print("need valid coords before submitting post")
+            showNoValidLocation()
+            //getLocation()
+            return false
         }
-        print("need valid coords before submitting post")
-        getLocation()
-        return false
+        location = currentLocation
+        print("passing valid coords")
+        return true
     }
 }
 
 //MARK: - MapViewDelegate
 extension MapViewController : MKMapViewDelegate {
-   
-    /*
-     Function to add - Make an annotation "draggable" by the user once done filling out the necessary fields in create post.
-     https://stackoverflow.com/questions/29776853/ios-swift-mapkit-making-an-annotation-draggable-by-the-user
-     
-     It looks like a mapview, AnnotationView, and state change function needs to be incorporated. 
-     
-     */
     
-    /// Called whent he user taps the disclosure button in the bridge callout.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if annotationView == nil {
+            //create the view
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "GarbageBag")
+        
+        return annotationView
+    }
+
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         // This illustrates how to detect which annotation type was tapped on for its callout.
         if let annotation = view.annotation as? TaggedLocationAnnotation, annotation.isKind(of: TaggedLocationAnnotation.self) {
-            print("Tapped Golden Gate Bridge annotation accessory view")
+            print("tapped detail callout button")
             
             if let detailNavController = storyboard?.instantiateViewController(withIdentifier: "DetailNavController") {
                 detailNavController.modalPresentationStyle = .popover
@@ -148,44 +164,53 @@ extension MapViewController : MKMapViewDelegate {
 
 //MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
-    /*
-     To Do:
-     Separate out authorization vs start receiving location
-     Check for a valid location before enabling other buttons on screen, performing segue, zoom
-     or any other functionality
-     
-     */
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authStatus = manager.authorizationStatus
+        switch authStatus {
+        case .authorizedWhenInUse:  // Location services are available
+            getLocation()
+            break
+               
+        case .restricted, .denied:  // Location services currently unavailable.
+            showLocationServicesDeniedAlert()
+            break
+               
+        case .notDetermined:        // Authorization not determined yet.
+            manager.requestWhenInUseAuthorization()
+            break
+               
+        default:
+            break
+        }
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error.localizedDescription)")
         
-        //Unable to get location right now, try again later
         if (error as NSError).code == CLError.locationUnknown.rawValue {
             print("Location Unknown")
             return
         }
         
-        //store error
         locationError = error
         stopLocationManager()
-        getStatus()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         
-        //Last location is old/cached, ignore and continue search
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
         }
         
-        //ignore invalid accuracies
         if newLocation.horizontalAccuracy < 0 {
             return
         }
         
-        //If there was no previous location, or the accuracy is larger than the most recent one, adopt new location
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             //new location to be used, clear error
             locationError = nil
@@ -197,25 +222,7 @@ extension MapViewController : CLLocationManagerDelegate {
                 stopLocationManager()
             }
         }
-        
-        getStatus()
- 
     }
-    
-/*
- Error calling this function below. It is called when location manager object is declared.
- Recalling getLocation in this instance causes location = nil which bricks program
- See Ref- https://stackoverflow.com/questions/42869188/locationmanager-didchangeauthorization-executes-when-app-first-runs
----------------------------------------------------------------------------------------------------------
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let authStatus = manager.authorizationStatus
-        if authStatus == .authorizedWhenInUse {
-            getLocation()
-        } else {
-            return
-        }
-    }
-*/
     
     func stopLocationManager() {
         if updatingLocation {
@@ -229,30 +236,14 @@ extension MapViewController : CLLocationManagerDelegate {
             
         }
         print("Stop updating location")
-        getStatus()
-    }
-    
-    func checkAuthStatus() {
-        let authStatus = locationManager.authorizationStatus
-        if authStatus == .notDetermined {
-            print("Auth status not determined")
-            locationManager.requestWhenInUseAuthorization()
-            return
-        } else if authStatus == .restricted || authStatus == .denied {
-            print("restricted")
-            showLocationServicesDeniedAlert()
-            return
-        }
     }
     
     //need to clean up this function, breakout authorization with status, etc.
     func getLocation() {
-        checkAuthStatus()
         if updatingLocation {
             //print(location!)
             stopLocationManager()
         } else {
-            getStatus()
             location = nil
             locationError = nil
             startLocationManager()
@@ -260,18 +251,36 @@ extension MapViewController : CLLocationManagerDelegate {
     }
     
     func startLocationManager() {
-        print("getting lcoation")
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.startUpdatingLocation()
-            updatingLocation = true
-            timer = Timer.scheduledTimer(
-                timeInterval: 30,
-                target: self,
-                selector: #selector(didTimeOut),
-                userInfo: nil,
-                repeats: false)
+        print("starting location services")
+        checkLocationManagerAuthStatus()
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.startUpdatingLocation()
+        updatingLocation = true
+        timer = Timer.scheduledTimer(
+            timeInterval: 30,
+            target: self,
+            selector: #selector(didTimeOut),
+            userInfo: nil,
+            repeats: false)
+    }
+    
+    func checkLocationManagerAuthStatus() {
+        let authStatus = locationManager.authorizationStatus
+        switch authStatus {
+        case .authorizedWhenInUse:  // Location services are available
+            print("authorized to record locationr")
+            break
+            
+        case .restricted, .denied:  // Location services currently unavailable.
+            showLocationServicesDeniedAlert()
+            break
+            
+        case .notDetermined:        // Authorization not determined yet.
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        default:
+            break
         }
     }
     
@@ -293,27 +302,22 @@ extension MapViewController : CLLocationManagerDelegate {
         if location == nil {
             stopLocationManager()
             locationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
-            getStatus()
         }
     }
     
-    
-    func getStatus() {
-        let statusMessage: String
+    func showLocationServicesDeniedAlert() {
+        let ac = UIAlertController(title: "Location Services Disable", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
         
-        if let error = locationError as NSError? {
-            if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
-                statusMessage = "Location Services Disabled"
-            } else {
-                statusMessage = "Error Getting Location"
-            }
-        } else if !CLLocationManager.locationServicesEnabled() {
-            statusMessage = "Location Services Disabled"
-        } else if updatingLocation {
-            statusMessage = "Searching..."
-        } else {
-            statusMessage = "Tap 'Get Location' to Start"
-        }
-        print(statusMessage)
+        present(ac, animated: true, completion: nil)
+    }
+    
+    func showNoValidLocation() {
+        let ac = UIAlertController(title: "No valid location", message: "Please check your phone's location services in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        
+        present(ac, animated: true, completion: nil)
     }
 }

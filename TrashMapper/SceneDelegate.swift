@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Auth.auth().addStateDidChangeListener { auth, user in
             if Auth.auth().currentUser != nil {
                 print("user signed in")
+                
+                //happens after a sign in
                 FirebaseDataManager.updateUserDocumentLoginEntries()
                 if let windowScene = scene as? UIWindowScene {
                     let window = UIWindow(windowScene: windowScene)

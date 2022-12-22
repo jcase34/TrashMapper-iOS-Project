@@ -20,14 +20,16 @@ class TaggedLocationAnnotation: NSObject, MKAnnotation {
         coordinate: CLLocationCoordinate2D,
         title: String,
         subtitle: String
+        //postImage: UIImage
     ) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
+        //self.image = postImage
         
         super.init()
     }
     
-    var image = UIImage(named: "GarbageBag")
+    //var image = UIImage(named: "GarbageBag")
     
 }
