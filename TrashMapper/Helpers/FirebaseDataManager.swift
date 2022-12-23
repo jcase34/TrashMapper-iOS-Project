@@ -111,7 +111,7 @@ class FirebaseDataManager {
         //var filePaths: [String] = []
         
         //asynch operation
-        docRef.getDocuments() { QuerySnapshot, Error in
+        docRef.addSnapshotListener { QuerySnapshot, Error in
             if let err = Error {
                 print("Error fetching data from FB \(err.localizedDescription)")
             } else {

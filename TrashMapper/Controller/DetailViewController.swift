@@ -8,18 +8,16 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
     
+    var imageURL: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let image = imageView.image {
-            preferredContentSize = image.size
-        }
+        print("Image URL Received at detail: \(imageURL)")
     }
     
-    @IBAction private func doneAction(_ sender: Any) {
+    @IBAction func close() {
         dismiss(animated: true, completion: nil)
     }
+    
 }

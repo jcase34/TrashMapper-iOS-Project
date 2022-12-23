@@ -15,17 +15,18 @@ class TaggedLocationAnnotation: NSObject, MKAnnotation {
     
     var title: String?
     var subtitle: String?
+    var imageURL: String?
     
     init(
         coordinate: CLLocationCoordinate2D,
         title: String,
-        subtitle: String
-        //postImage: UIImage
+        subtitle: String,
+        imageURL: String
     ) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
-        //self.image = postImage
+        self.imageURL = imageURL
         
         super.init()
     }

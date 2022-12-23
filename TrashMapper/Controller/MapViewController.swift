@@ -25,7 +25,7 @@ class MapViewController: UIViewController  {
     var authStatus : CLAuthorizationStatus = .notDetermined
     var location: CLLocation? {
         didSet{
-            print(location)
+            print("location updated: \(location)")
             //zoomUserLocation()
         }
     }
@@ -54,11 +54,11 @@ class MapViewController: UIViewController  {
         //mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         getLocation()
         zoomUserLocation()
+        pullPostsFromFirebase()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("@ view will appear")
-        pullPostsFromFirebase()
     }
         
     @IBAction func zoomToUser(_ sender: Any) {
@@ -69,7 +69,6 @@ class MapViewController: UIViewController  {
             showNoValidLocation()
             print("no zoomz allowed")
         }
-  
     }
     
     //MARK: - Firebase Operations
@@ -77,15 +76,15 @@ class MapViewController: UIViewController  {
         print("get cloud data")
         FirebaseDataManager.pullPostsFromCloud { newAnnotations in
             for annotation in newAnnotations {
-                print(annotation.description)
+                print(annotation)
                 let newTag = TaggedLocationAnnotation(
                     coordinate: CLLocationCoordinate2D(latitude: annotation.latitude, longitude: annotation.longitude),
                     title: annotation.date,
-                    subtitle: annotation.description)
+                    subtitle: annotation.description,
+                    imageURL: annotation.imageUrl)
                 self.mapAnnotation.append(newTag)
             }
         }
-        
     }
     
     @IBAction func PullButton(_ sender: Any) {
@@ -100,7 +99,14 @@ class MapViewController: UIViewController  {
             let destinationVC = segue.destination as! CreatePostViewController
             destinationVC.coordinate = location!.coordinate
             //possible error on not getting current location vs changing to other tab
-      }
+        } else if segue.identifier == "ShowDetail" {
+            segue.destination.modalPresentationStyle = .overFullScreen
+            let destinationVC = segue.destination as! DetailViewController
+            let segueInfo = sender as! TaggedLocationAnnotation
+            let imgURL = segueInfo.imageURL
+            destinationVC.imageURL = imgURL
+            
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -145,21 +151,10 @@ extension MapViewController : MKMapViewDelegate {
         // This illustrates how to detect which annotation type was tapped on for its callout.
         if let annotation = view.annotation as? TaggedLocationAnnotation, annotation.isKind(of: TaggedLocationAnnotation.self) {
             print("tapped detail callout button")
+            performSegue(withIdentifier: "ShowDetail", sender: annotation)
             
-            if let detailNavController = storyboard?.instantiateViewController(withIdentifier: "DetailNavController") {
-                detailNavController.modalPresentationStyle = .popover
-                let presentationController = detailNavController.popoverPresentationController
-                presentationController?.permittedArrowDirections = .any
-                
-                // Anchor the popover to the button that triggered the popover.
-                presentationController?.sourceRect = control.frame
-                presentationController?.sourceView = control
-                
-                present(detailNavController, animated: true, completion: nil)
-            }
         }
     }
-    
 }
 
 //MARK: - CLLocationManagerDelegate
