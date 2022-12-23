@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="LbJ-hu-ato" userLabel="Detail" customClass="DetailViewController" customModule="TrashMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EJP-2d-e7x">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cca-hE-7JZ" userLabel="Pop-up View">
-                                <rect key="frame" x="55" y="218.66666666666663" width="280" height="350"/>
+                                <rect key="frame" x="55" y="247" width="280" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-ba-muj" userLabel="Close Button">
                                         <rect key="frame" x="222" y="8" width="50" height="35"/>
@@ -130,7 +130,7 @@
                         <outlet property="PullButton" destination="SKf-bC-8zT" id="XbZ-7d-1MC"/>
                         <outlet property="mapView" destination="6fX-5H-usz" id="v6s-zy-w3a"/>
                         <outlet property="zoomToUser" destination="1dY-Dj-QA1" id="sh5-PI-ZUF"/>
-                        <segue destination="LbJ-hu-ato" kind="presentation" identifier="ShowDetail" id="KdR-jo-f75"/>
+                        <segue destination="LbJ-hu-ato" kind="presentation" identifier="ShowDetail" modalPresentationStyle="overFullScreen" id="KdR-jo-f75"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjl-rA-H8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -718,7 +718,7 @@
         <image name="plus.square.dashed" catalog="system" width="128" height="114"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="DetailBG">
-            <color red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="0.94999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="quaternarySystemFillColor">
             <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
