@@ -28,3 +28,8 @@ https://stackoverflow.com/questions/29776853/ios-swift-mapkit-making-an-annotati
 It looks like a mapview, AnnotationView, and state change function needs to be incorporated. 
 - <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
 
+## Passing Data
+https://stackoverflow.com/questions/5210535/passing-data-between-view-controllers?page=1&tab=scoredesc#tab-top
+https://makeapppie.com/2014/09/15/swift-swift-programmatic-navigation-view-controllers-in-swift/
+https://stackoverflow.com/questions/40337827/passing-data-from-map-annotation-to-a-detail-view-controller-swift-3
+

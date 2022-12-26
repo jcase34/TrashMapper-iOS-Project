@@ -87,10 +87,6 @@ class MapViewController: UIViewController  {
         }
     }
     
-    @IBAction func PullButton(_ sender: Any) {
-        pullPostsFromFirebase()
-    }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         location = locationManager.location
@@ -102,10 +98,13 @@ class MapViewController: UIViewController  {
         } else if segue.identifier == "ShowDetail" {
             segue.destination.modalPresentationStyle = .overFullScreen
             let destinationVC = segue.destination as! DetailViewController
-            let segueInfo = sender as! TaggedLocationAnnotation
-            let imgURL = segueInfo.imageURL
-            destinationVC.imageURL = imgURL
-            
+            let annotationInformation = sender as! TaggedLocationAnnotation
+            let postDict: [String:String] = [
+                "postTitle": annotationInformation.title!,
+                "postSubtitle": annotationInformation.subtitle!,
+                "postImageURL": annotationInformation.imageURL!
+            ]
+            destinationVC.postDetails = postDict
         }
     }
     
