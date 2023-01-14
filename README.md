@@ -20,21 +20,3 @@ The app will utilize the Apple MapKit for it's main view and map view. Tagged lo
 There will also be a tableView which will contain a list of the posts, similar to the tagged locations but in tableView form. Similar post information wil lbe available.
 
 The app will use Firebase as it's backend service. CRUD operations will need to be supported as the data points will contiuously change within the application.
-
-# Demo
-
-## User Sign Up/Login
-
-## Navigating around
-
-## Creating a Post
-
-## Selecting a Post
-
-## Updating a Post
-
-## Deleting a Post
-
-## User Tab/Details
-
-
