@@ -27,26 +27,15 @@ class DetailViewController: UIViewController {
         setupElements()
         
         detailView.layer.cornerRadius = 15
-        downloadImage()
+        FirebaseDataManager.shared.downloadImage(postDetails["postImageURL"]!) {image in
+            self.postImage.image = image
+        }
         titleLabel.text = postDetails["postTitle"]
         subtitleLabel.text = postDetails["postSubtitle"]
     }
     
     @IBAction func close() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    func downloadImage() {
-        let imageRef = Storage.storage().reference().child(postDetails["postImageURL"]!)
-        
-        imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                print("Error occurred during image download \(error)")
-            } else {
-                let image = UIImage(data: data!)
-                self.postImage.image = image
-            }
-        }
     }
     
     func setupElements() {

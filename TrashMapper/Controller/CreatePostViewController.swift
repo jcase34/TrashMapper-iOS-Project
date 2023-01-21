@@ -157,10 +157,10 @@ extension CreatePostViewController {
         if let image = image {
             //prompt to select an image
             let path = "images/\(UUID().uuidString).jpg"
-            let docRef = FirebaseDataManager.generateNewPostReferenceID()
-            FirebaseDataManager.createNewPostInCloud(dateLabel.text!, descriptionTextView.text, coordinate!, imagePath: path, docRef)
-            FirebaseDataManager.updateUserDocumentPostsEntries(docRef)
-            FirebaseDataManager.uploadPhoto(image: image, imagePath: path)
+            let docRef = FirebaseDataManager.shared.generateNewPostReferenceID()
+            FirebaseDataManager.shared.createNewPostInCloud(dateLabel.text!, descriptionTextView.text, coordinate!, imagePath: path, docRef)
+            FirebaseDataManager.shared.updateUserDocumentPostsEntries(docRef)
+            FirebaseDataManager.shared.uploadPhoto(image: image, imagePath: path)
             
             navigationController?.popViewController(animated: true)
         } else {

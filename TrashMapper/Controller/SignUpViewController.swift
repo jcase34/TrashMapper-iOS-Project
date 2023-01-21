@@ -110,7 +110,7 @@ class SignUpViewController : UIViewController {
                     /*
                      Add loading button for sign out
                      */
-                    FirebaseDataManager.createInitialEmptyUserDocument()
+                    FirebaseDataManager.shared.createInitialEmptyUserDocument()
                     self.transitionToMainApp()
                     
                 }

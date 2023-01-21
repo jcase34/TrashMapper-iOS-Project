@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("user signed in")
                 
                 //happens after a sign in
-                FirebaseDataManager.updateUserDocumentLoginEntries()
+                FirebaseDataManager.shared.updateUserDocumentLoginEntries()
                 if let windowScene = scene as? UIWindowScene {
                     let window = UIWindow(windowScene: windowScene)
                     let stor = UIStoryboard.init(name: "Main", bundle: nil)

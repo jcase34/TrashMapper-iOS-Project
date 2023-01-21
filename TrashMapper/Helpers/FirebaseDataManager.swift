@@ -18,7 +18,11 @@ import SDWebImage
 
 class FirebaseDataManager {
     
-    static func createInitialEmptyUserDocument() {
+    static let shared = FirebaseDataManager()
+    
+    private init() {}
+    
+    func createInitialEmptyUserDocument() {
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection(K.users).document(user!.email!).setData([
@@ -34,7 +38,7 @@ class FirebaseDataManager {
         }
     }
     
-    static func updateUserDocumentLoginEntries() {
+    func updateUserDocumentLoginEntries() {
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection(K.users).document(user!.email!).updateData([
@@ -49,7 +53,7 @@ class FirebaseDataManager {
         }
     }
     
-    static func updateUserDocumentPostsEntries(_ docRef: DocumentReference) {
+    func updateUserDocumentPostsEntries(_ docRef: DocumentReference) {
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection(K.users).document(user!.email!).updateData([
@@ -64,7 +68,7 @@ class FirebaseDataManager {
         }
     }
     
-    static func updateUserDocumentEntriesFromPostCreation(_ docRef: DocumentReference) {
+    func updateUserDocumentEntriesFromPostCreation(_ docRef: DocumentReference) {
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         db.collection(K.users).document(user!.email!).updateData([
@@ -80,12 +84,12 @@ class FirebaseDataManager {
         }
     }
     
-    static func generateNewPostReferenceID() -> DocumentReference {
+    func generateNewPostReferenceID() -> DocumentReference {
         let db = Firestore.firestore()
         return db.collection(K.posts).document()
     }
     
-    static func createNewPostInCloud(_ dateToAdd: String, _ descriptionText: String, _ location: CLLocationCoordinate2D, imagePath: String, _ newDocumentRef: DocumentReference) {
+    func createNewPostInCloud(_ dateToAdd: String, _ descriptionText: String, _ location: CLLocationCoordinate2D, imagePath: String, _ newDocumentRef: DocumentReference) {
         let user = Auth.auth().currentUser
         newDocumentRef.setData([
             "date" : dateToAdd,
@@ -103,7 +107,7 @@ class FirebaseDataManager {
         }
     }
     
-    static func pullPostsFromCloud(_ newPostsHandler: @escaping ([Post]) -> Void) {
+    func pullPostsFromCloud(_ newPostsHandler: @escaping ([Post]) -> Void) {
 
         let db = Firestore.firestore()
         var posts = [Post]()
@@ -129,7 +133,7 @@ class FirebaseDataManager {
         
     }
     
-    static func uploadPhoto(image: UIImage, imagePath: String) {
+    func uploadPhoto(image: UIImage, imagePath: String) {
         //create storage reference from storage framework
         let storageRef = Storage.storage().reference()
         
@@ -158,11 +162,17 @@ class FirebaseDataManager {
         //save reference to database linking user email
     }
     
-//    static func retrievePhotos(imageURLs: [String]) {
-//        for imageURL in imageURLs {
-//            let imageView = UIImageView()
-//            imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: <#T##String#>))
-//        }
-//    }
+    func downloadImage(_ path: String, _ newPostsHandler: @escaping (UIImage) -> Void) {
+        var newImage = UIImage()
+        let imageRef = Storage.storage().reference().child(path)
+        imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("Error occurred during image download \(error)")
+            } else {
+                newImage = UIImage(data: data!)!
+            }
+            newPostsHandler(newImage)
+        }
+    }
     
 }

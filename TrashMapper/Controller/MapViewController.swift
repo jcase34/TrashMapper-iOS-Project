@@ -54,6 +54,7 @@ class MapViewController: UIViewController  {
         //mapView.register(TaggedLocationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         getLocation()
         zoomUserLocation()
+        setupLocationsCarousel()
         pullPostsFromFirebase()
     }
     
@@ -71,10 +72,24 @@ class MapViewController: UIViewController  {
         }
     }
     
+    func setupLocationsCarousel() {
+        let locationsView = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        locationsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(locationsView)
+        NSLayoutConstraint.activate([
+            locationsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            locationsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            locationsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        ])
+        view.addSubview(locationsView)
+        locationsView.backgroundColor = .red
+
+    }
+    
     //MARK: - Firebase Operations
     func pullPostsFromFirebase() {
         print("get cloud data")
-        FirebaseDataManager.pullPostsFromCloud { newAnnotations in
+        FirebaseDataManager.shared.pullPostsFromCloud { newAnnotations in
             for annotation in newAnnotations {
                 print(annotation)
                 let newTag = TaggedLocationAnnotation(
